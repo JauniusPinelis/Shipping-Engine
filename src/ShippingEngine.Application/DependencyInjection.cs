@@ -17,6 +17,7 @@ namespace ShippingEngine.Application
 
             services.AddScoped<IDiscountService, DiscountService>();
             services.AddScoped<IFileService, FileService>();
+            services.AddScoped<DataService>();
 
             services.AddScoped<Runner>();
 
