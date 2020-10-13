@@ -12,8 +12,7 @@ namespace ShippingEngine
 
 			var serviceProvider = services.BuildServiceProvider();
 
-			serviceProvider.GetService<AppRunner>().Run();
+			serviceProvider.GetService<Runner>().Run();
 		}
-
-		
+	}	
 }
