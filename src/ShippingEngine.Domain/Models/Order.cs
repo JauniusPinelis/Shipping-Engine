@@ -11,5 +11,7 @@ namespace ShippingEngine.Domain.Models
 		public string Size { get; set; }
 
 		public bool Valid { get; set; } = true;
+
+		public decimal? Discount { get; set; }
 	}
 }

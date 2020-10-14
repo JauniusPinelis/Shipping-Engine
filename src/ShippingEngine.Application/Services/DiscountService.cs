@@ -1,4 +1,5 @@
 ﻿using ShippingEngine.Application.Interfaces;
+using ShippingEngine.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,14 +21,22 @@ namespace ShippingEngine.Application.Services
 
 		public void CalculateDiscounts()
 		{
-			var orders = _dataService.GetOrders();
-			var pricings = _dataService.GetPricings();
+			var orders = _dataService.GetOrders().ToList();
+			var pricings = _dataService.GetPricings().ToList();
+
+			orders.ForEach(o => SetDiscount(o));
+
 		}
 
 		public void ImportData()
 		{
 			_dataService.ImportOrders();
 			_dataService.ImportPricings();
+		}
+
+		private void SetDiscount(Order order)
+		{
+			
 		}
     }
 }
