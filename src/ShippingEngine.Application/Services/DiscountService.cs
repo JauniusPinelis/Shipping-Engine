@@ -24,7 +24,7 @@ namespace ShippingEngine.Application.Services
 			var orders = _dataService.GetOrders().ToList();
 			var pricings = _dataService.GetPricings().ToList();
 
-			orders.ForEach(o => SetDiscount(o));
+			orders.ForEach(o => SetDiscount(o, pricings));
 
 		}
 
@@ -34,9 +34,16 @@ namespace ShippingEngine.Application.Services
 			_dataService.ImportPricings();
 		}
 
-		private void SetDiscount(Order order)
+		private void GeneratePricingStrategies()
 		{
-			
+
+		}
+
+		private void SetDiscount(Order order, IEnumerable<Pricing> pricings)
+		{
+			// First Strategy
+
+
 		}
     }
 }

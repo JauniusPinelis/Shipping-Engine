@@ -12,8 +12,10 @@ namespace ShippingEngine.Application.Services
 {
 	public class DataService : IDataService
 	{
-		private List<Order> _orders = new List<Order>();
-		private List<Pricing> _pricings = new List<Pricing>();
+		private readonly List<Order> _orders = new List<Order>();
+		private readonly List<Pricing> _pricings = new List<Pricing>();
+
+		public DiscountInfo _discountInfo = new DiscountInfo();
 
 		private readonly IFileService _fileService;
 
@@ -48,6 +50,16 @@ namespace ShippingEngine.Application.Services
 		public IEnumerable<Order> GetOrders()
 		{
 			return _orders;
+		}
+
+		public DiscountInfo GetDiscountInfo()
+		{
+			return _discountInfo;
+		}
+
+		public void SaveDiscountInfo(DiscountInfo discountInfo)
+		{
+			_discountInfo = discountInfo;
 		}
 	}
 }

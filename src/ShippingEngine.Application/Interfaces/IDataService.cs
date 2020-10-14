@@ -12,5 +12,8 @@ namespace ShippingEngine.Application.Interfaces
 		IEnumerable<Order> GetOrders();
 
 		IEnumerable<Pricing> GetPricings();
+
+		DiscountInfo GetDiscountInfo();
+		void SaveDiscountInfo();
 	}
 }
