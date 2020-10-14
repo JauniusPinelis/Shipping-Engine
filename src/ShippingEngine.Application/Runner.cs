@@ -22,6 +22,7 @@ namespace ShippingEngine.Application
 		public void Run()
 		{
 			_dataService.ImportOrders();
+			_dataService.ImportPricings();
 		}
 	}
 }

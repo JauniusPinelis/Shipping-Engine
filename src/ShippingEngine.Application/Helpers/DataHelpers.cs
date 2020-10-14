@@ -24,8 +24,30 @@ namespace ShippingEngine.Application.Helpers
             }
             catch(Exception)
 			{
-                throw new Exception($"{orderData} is not in the right format");
+                return new Order()
+                {
+                    Valid = false
+                };
             }
+		}
+
+        public static Pricing ParsePricing(string pricingData)
+		{
+            try
+			{
+                var elements = pricingData.Split(' ');
+
+                return new Pricing()
+                {
+                    Provider = elements[0],
+                    Size = elements[1],
+                    Price = Decimal.Parse(elements[2])
+                };
+            }
+			catch (Exception)
+			{
+                throw new Exception($"Pricing {pricingData} has incorrect format");
+			}
 		}
     }
 }

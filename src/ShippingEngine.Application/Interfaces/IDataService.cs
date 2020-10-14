@@ -3,5 +3,7 @@
 	public interface IDataService
 	{
 		void ImportOrders();
+
+		void ImportPricings();
 	}
 }

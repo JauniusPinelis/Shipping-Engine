@@ -9,5 +9,7 @@ namespace ShippingEngine.Domain.Models
 		public DateTime Date { get; set; }
 		public string Provider { get; set; }
 		public string Size { get; set; }
+
+		public bool Valid { get; set; } = true;
 	}
 }

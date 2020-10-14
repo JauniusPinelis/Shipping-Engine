@@ -10,13 +10,25 @@ namespace ShippingEngine.Application.Services
 {
     public class FileService : IFileService
     {
-        private const string inputPath = "Data/input.txt";
-        private const string outputName = "output.txt";
+        private const string orderDataFilePath = "Data/Input.txt";
+        private const string pricingDataFilePath = "Data/Pricings.txt";
 
-        public IEnumerable<string> ReadInputFile()
+        private const string orderOutputFilePath = "Output/orders.txt";
+
+        public IEnumerable<string> ReadOrderData()
 	    {
-            var filePath = Path.Combine(Environment.CurrentDirectory, inputPath);
-            return File.ReadAllLines(filePath).ToList();
+            return ReadData(orderDataFilePath);
+        }
+
+        public IEnumerable<string> ReadPricingData()
+		{
+            return ReadData(pricingDataFilePath);
+        }
+
+        private IEnumerable<string> ReadData(string filePath)
+		{
+            var fullPath = Path.Combine(Environment.CurrentDirectory, filePath);
+            return File.ReadAllLines(fullPath).ToList();
         }
     }
 }

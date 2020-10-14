@@ -18,7 +18,7 @@ namespace ShippingEngine.Application.Services
 
 		public void ImportData()
 		{
-			var data = _fileService.ReadInputFile();
+			
 			
 		}
     }
