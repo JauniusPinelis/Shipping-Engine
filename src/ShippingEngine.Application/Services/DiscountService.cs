@@ -20,7 +20,8 @@ namespace ShippingEngine.Application.Services
 
 		public void CalculateDiscounts()
 		{
-			throw new NotImplementedException();
+			var orders = _dataService.GetOrders();
+			var pricings = _dataService.GetPricings();
 		}
 
 		public void ImportData()

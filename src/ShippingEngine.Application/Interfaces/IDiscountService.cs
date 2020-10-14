@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ShippingEngine.Application.Interfaces
 {
-    public interface IDiscountService
-    {
-        
-    }
+	public interface IDiscountService
+	{
+		void ImportData();
+		void CalculateDiscounts();
+	}
 }

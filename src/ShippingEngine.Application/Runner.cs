@@ -10,19 +10,15 @@ namespace ShippingEngine.Application
 	{
 		private readonly IDiscountService _discountService;
 
-		public Runner(IDiscountService discountService, IFileService fileService, DataService dataService)
+		public Runner(IDiscountService discountService)
 		{
 			_discountService = discountService;
-			_fileService = fileService;
-			_dataService = dataService;
 		}
 
 		public void Run()
 		{
 			_discountService.ImportData();
-			
-
-			_discountService.CalculateDiscounts()
+			_discountService.CalculateDiscounts();
 		}
 	}
 }
