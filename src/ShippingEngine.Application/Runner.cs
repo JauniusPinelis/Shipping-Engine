@@ -9,8 +9,6 @@ namespace ShippingEngine.Application
 	public class Runner
 	{
 		private readonly IDiscountService _discountService;
-		private readonly IFileService _fileService;
-		private readonly IDataService _dataService;
 
 		public Runner(IDiscountService discountService, IFileService fileService, DataService dataService)
 		{
@@ -21,8 +19,10 @@ namespace ShippingEngine.Application
 
 		public void Run()
 		{
-			_dataService.ImportOrders();
-			_dataService.ImportPricings();
+			_discountService.ImportData();
+			
+
+			_discountService.CalculateDiscounts()
 		}
 	}
 }

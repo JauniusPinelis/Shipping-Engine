@@ -10,16 +10,23 @@ namespace ShippingEngine.Application.Services
     public class DiscountService : IDiscountService
     {
 		private readonly IFileService _fileService;
+		private readonly IDataService _dataService;
 
-		public DiscountService(IFileService fileService)
+		public DiscountService(IFileService fileService, IDataService dataService)
 		{
 			_fileService = fileService;
+			_dataService = dataService;
+		}
+
+		public void CalculateDiscounts()
+		{
+			throw new NotImplementedException();
 		}
 
 		public void ImportData()
 		{
-			
-			
+			_dataService.ImportOrders();
+			_dataService.ImportPricings();
 		}
     }
 }

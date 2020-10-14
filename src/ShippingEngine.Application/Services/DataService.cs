@@ -37,6 +37,8 @@ namespace ShippingEngine.Application.Services
 			var pricingData = _fileService.ReadPricingData();
 
 			var pricings = pricingData.Select(p => DataHelpers.ParsePricing(p));
+
+			Pricings.AddRange(pricings);
 		}
 	}
 }
