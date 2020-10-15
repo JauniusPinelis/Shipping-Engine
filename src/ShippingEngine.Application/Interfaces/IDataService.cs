@@ -14,6 +14,6 @@ namespace ShippingEngine.Application.Interfaces
 		IEnumerable<Pricing> GetPricings();
 
 		DiscountInfo GetDiscountInfo();
-		void SaveDiscountInfo();
+		void SaveDiscountInfo(DiscountInfo discountInfo);
 	}
 }

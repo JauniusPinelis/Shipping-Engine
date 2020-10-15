@@ -1,4 +1,5 @@
-﻿using ShippingEngine.Application.Interfaces;
+﻿using ShippingEngine.Application.Extensions;
+using ShippingEngine.Application.Interfaces;
 using ShippingEngine.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -12,19 +13,21 @@ namespace ShippingEngine.Application.Services
     {
 		private readonly IFileService _fileService;
 		private readonly IDataService _dataService;
+		private readonly IPricingStrategyFactory _pricingStrategyFactory;
 
-		public DiscountService(IFileService fileService, IDataService dataService)
+		public DiscountService(IFileService fileService, IDataService dataService, 
+			IPricingStrategyFactory pricingStrategyFactory)
 		{
 			_fileService = fileService;
 			_dataService = dataService;
+			_pricingStrategyFactory = pricingStrategyFactory;
 		}
 
 		public void CalculateDiscounts()
 		{
 			var orders = _dataService.GetOrders().ToList();
-			var pricings = _dataService.GetPricings().ToList();
 
-			orders.ForEach(o => SetDiscount(o, pricings));
+			orders.ForEach(o => SetDiscount(o));
 
 		}
 
@@ -34,15 +37,12 @@ namespace ShippingEngine.Application.Services
 			_dataService.ImportPricings();
 		}
 
-		private void GeneratePricingStrategies()
-		{
-
-		}
-
-		private void SetDiscount(Order order, IEnumerable<Pricing> pricings)
+		private void SetDiscount(Order order)
 		{
 			// First Strategy
+			var pricingStrategy = _pricingStrategyFactory.Build(order);
 
+			var updatedOrderInfo = order.Apply(pricingStrategy);
 
 		}
     }

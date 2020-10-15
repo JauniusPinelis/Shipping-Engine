@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using ShippingEngine.Application.Factories;
 using ShippingEngine.Application.Interfaces;
 using ShippingEngine.Application.Services;
 using System;
@@ -18,6 +19,7 @@ namespace ShippingEngine.Application
             services.AddScoped<IDiscountService, DiscountService>();
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<DataService>();
+            services.AddScoped<IPricingStrategyFactory, PricingStrategyFactory>();
 
             services.AddScoped<Runner>();
 
