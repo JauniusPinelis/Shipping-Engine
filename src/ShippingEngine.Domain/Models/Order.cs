@@ -12,6 +12,7 @@ namespace ShippingEngine.Domain.Models
 
 		public bool Valid { get; set; } = true;
 
+		public decimal? Price { get; set; }
 		public decimal? Discount { get; set; }
 	}
 }

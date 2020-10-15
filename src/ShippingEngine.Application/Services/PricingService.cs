@@ -9,25 +9,23 @@ using System.Threading.Tasks;
 
 namespace ShippingEngine.Application.Services
 {
-    public class DiscountService : IDiscountService
+    public class PricingService : IPricingService
     {
-		private readonly IFileService _fileService;
 		private readonly IDataService _dataService;
-		private readonly IPricingStrategyFactory _pricingStrategyFactory;
+		private readonly IDiscountFactory _discountFactory;
 
-		public DiscountService(IFileService fileService, IDataService dataService, 
-			IPricingStrategyFactory pricingStrategyFactory)
+		public PricingService( IDataService dataService, 
+			IDiscountFactory discountFactory)
 		{
-			_fileService = fileService;
 			_dataService = dataService;
-			_pricingStrategyFactory = pricingStrategyFactory;
+			_discountFactory = discountFactory;
 		}
 
 		public void CalculateDiscounts()
 		{
 			var orders = _dataService.GetOrders().ToList();
 
-			orders.ForEach(o => SetDiscount(o));
+			orders.ForEach(o => SetPrice(o));
 
 		}
 
@@ -37,13 +35,16 @@ namespace ShippingEngine.Application.Services
 			_dataService.ImportPricings();
 		}
 
+		private void SetPrice(Order order)
+		{
+			order.Price = _dataService.GetPrice(order.Provider, order.Size);
+			SetDiscount(order);
+		}
+
 		private void SetDiscount(Order order)
 		{
-			// First Strategy
-			var pricingStrategy = _pricingStrategyFactory.Build(order);
-
-			var updatedOrderInfo = order.Apply(pricingStrategy);
-
+			var discount = _discountFactory.Build(order);
+			order.Apply(discount);
 		}
     }
 }

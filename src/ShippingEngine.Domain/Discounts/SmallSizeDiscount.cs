@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShippingEngine.Domain.PricingStrategies
+namespace ShippingEngine.Domain.Discounts
 {
-	public class LowestPriceStrategy : IPricingStrategy
+	public class SmallSizeDiscount : IDiscount
 	{
-		public LowestPriceStrategy()
+		public SmallSizeDiscount()
 		{
 
 		}

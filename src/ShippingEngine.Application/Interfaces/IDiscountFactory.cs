@@ -3,8 +3,8 @@ using ShippingEngine.Domain.PricingStrategies;
 
 namespace ShippingEngine.Application.Interfaces
 {
-	public interface IPricingStrategyFactory
+	public interface IDiscountFactory
 	{
-		IPricingStrategy Build(Order order);
+		IDiscount Build(Order order);
 	}
 }

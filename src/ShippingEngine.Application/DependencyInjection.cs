@@ -16,10 +16,10 @@ namespace ShippingEngine.Application
         {
             IServiceCollection services = new ServiceCollection();
 
-            services.AddScoped<IDiscountService, DiscountService>();
+            services.AddScoped<IPricingService, PricingService>();
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<DataService>();
-            services.AddScoped<IPricingStrategyFactory, PricingStrategyFactory>();
+            services.AddScoped<IDiscountFactory, DiscountFactory>();
 
             services.AddScoped<Runner>();
 

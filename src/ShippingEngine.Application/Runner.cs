@@ -8,9 +8,9 @@ namespace ShippingEngine.Application
 {
 	public class Runner
 	{
-		private readonly IDiscountService _discountService;
+		private readonly IPricingService _discountService;
 
-		public Runner(IDiscountService discountService)
+		public Runner(IPricingService discountService)
 		{
 			_discountService = discountService;
 		}

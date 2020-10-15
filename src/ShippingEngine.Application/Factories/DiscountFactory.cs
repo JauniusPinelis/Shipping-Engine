@@ -9,21 +9,19 @@ using System.Threading.Tasks;
 
 namespace ShippingEngine.Application.Factories
 {
-	public class PricingStrategyFactory : IPricingStrategyFactory
+	public class DiscountFactory : IDiscountFactory
 	{
 		private const int DISCOUNT_LIMIT = 10;
 		private const int FREE_LARGE_SHIPPING_COUNTER = 3;
 
 		private readonly IDataService _dataService;
 
-
-
-		public PricingStrategyFactory(IDataService dataService)
+		public DiscountFactory(IDataService dataService)
 		{
 			_dataService = dataService;
 		}
 
-		public IPricingStrategy Build(Order order)
+		public IDiscount Build(Order order)
 		{
 			var pricings = _dataService.GetPricings();
 			var discountInfo = _dataService.GetDiscountInfo();
@@ -31,24 +29,16 @@ namespace ShippingEngine.Application.Factories
 			var consumedDiscounts = discountInfo.AccumulatedDiscountsAMonth
 				.Where(k => k.Item1 == order.Date).Select(k => k.Item2).Sum();
 
-			var usedLargeShippments = discountInfo.LargeShipmentsAmonth.FirstOrDefault(l => l.Key == order.Date).Value;
+			var usedLargeShipments = discountInfo.LargeShipmentsAmonth.FirstOrDefault(l => l.Key == order.Date).Value;
 
-			if (order.Size == "S" && consumedDiscounts < DISCOUNT_LIMIT)
+			if (order.Size == "S")
 			{
-				return new LowestPriceStrategy();
+				return new SmallSizeDiscount();
 			}
-			else if (order.Size == "S")
+
+			if (order.Size == "L" && usedLargeShipments == FREE_LARGE_SHIPPING_COUNTER)
 			{
-				//RegularPricingStrategy
-				return new LowestPriceStrategy();
-			}
-			else if (order.Size == "L" && usedLargeShippments == FREE_LARGE_SHIPPING_COUNTER)
-			{
-				return new LowestPriceStrategy();
-			}
-			else
-			{
-				return new LowestPriceStrategy();
+				return new FreeLargeShippingDiscount();
 			}
 		}
 	}

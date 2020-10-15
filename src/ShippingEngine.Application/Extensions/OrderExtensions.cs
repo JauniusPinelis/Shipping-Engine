@@ -10,9 +10,9 @@ namespace ShippingEngine.Application.Extensions
 {
     public static class OrderExtensions
     {
-        public static DiscountInfo Apply(this Order order, IPricingStrategy pricingStrategy)
+        public static DiscountInfo Apply(this Order order, IDiscount pricingStrategy)
 		{
-            return null;
+            order
 		}
     }
 }

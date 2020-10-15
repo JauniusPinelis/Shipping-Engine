@@ -13,7 +13,11 @@ namespace ShippingEngine.Application.Interfaces
 
 		IEnumerable<Pricing> GetPricings();
 
+		decimal GetPrice(string provider, string size);
+
 		DiscountInfo GetDiscountInfo();
 		void SaveDiscountInfo(DiscountInfo discountInfo);
+
+
 	}
 }
