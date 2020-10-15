@@ -15,8 +15,8 @@ namespace ShippingEngine.Application.Interfaces
 
 		decimal GetPrice(string provider, string size);
 
-		DiscountInfo GetDiscountInfo();
-		void SaveDiscountInfo(DiscountInfo discountInfo);
+		UserInfo GetDiscountInfo();
+		void SaveDiscountInfo(UserInfo discountInfo);
 
 
 	}

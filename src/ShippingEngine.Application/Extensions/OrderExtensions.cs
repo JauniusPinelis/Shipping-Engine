@@ -1,5 +1,5 @@
-﻿using ShippingEngine.Domain.Models;
-using ShippingEngine.Domain.PricingStrategies;
+﻿using ShippingEngine.Domain.Discounts;
+using ShippingEngine.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +10,12 @@ namespace ShippingEngine.Application.Extensions
 {
     public static class OrderExtensions
     {
-        public static DiscountInfo Apply(this Order order, IDiscount pricingStrategy)
+        public static void Apply(this Order order, IDiscount discountStrategy)
 		{
-            order
+            var discount = discountStrategy.ApplyDiscount();
+
+            order.Price = discount.Price;
+            order.Discount = discount.Saved;
 		}
     }
 }

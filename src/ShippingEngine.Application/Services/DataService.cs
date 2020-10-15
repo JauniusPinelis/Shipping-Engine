@@ -15,7 +15,7 @@ namespace ShippingEngine.Application.Services
 		private readonly List<Order> _orders = new List<Order>();
 		private readonly List<Pricing> _pricings = new List<Pricing>();
 
-		public DiscountInfo _discountInfo = new DiscountInfo();
+		public UserInfo _discountInfo = new UserInfo();
 
 		private readonly IFileService _fileService;
 
@@ -47,17 +47,22 @@ namespace ShippingEngine.Application.Services
 			return _pricings;
 		}
 
+		public decimal GetPrice(string provider, string size)
+		{
+			return _pricings.FirstOrDefault(p => p.Provider == provider && p.Size == size).Price;
+		}
+
 		public IEnumerable<Order> GetOrders()
 		{
 			return _orders;
 		}
 
-		public DiscountInfo GetDiscountInfo()
+		public UserInfo GetDiscountInfo()
 		{
 			return _discountInfo;
 		}
 
-		public void SaveDiscountInfo(DiscountInfo discountInfo)
+		public void SaveDiscountInfo(UserInfo discountInfo)
 		{
 			_discountInfo = discountInfo;
 		}

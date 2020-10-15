@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShippingEngine.Domain.Models
 {
-    public class DiscountInfo
+    public class UserInfo
     {
         public List<Tuple<DateTime, decimal>> AccumulatedDiscountsAMonth { get; set; }
 

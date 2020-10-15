@@ -38,13 +38,16 @@ namespace ShippingEngine.Application.Services
 		private void SetPrice(Order order)
 		{
 			order.Price = _dataService.GetPrice(order.Provider, order.Size);
-			SetDiscount(order);
+			ApplyDiscount(order);
 		}
 
-		private void SetDiscount(Order order)
+		private void ApplyDiscount(Order order)
 		{
 			var discount = _discountFactory.Build(order);
-			order.Apply(discount);
+			if (discount != null)
+			{
+				order.Apply(discount);
+			}
 		}
     }
 }

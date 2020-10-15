@@ -1,5 +1,5 @@
 ﻿using ShippingEngine.Domain.Models;
-using ShippingEngine.Domain.PricingStrategies;
+using ShippingEngine.Domain.Discounts;
 
 namespace ShippingEngine.Application.Interfaces
 {
