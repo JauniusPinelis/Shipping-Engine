@@ -23,7 +23,7 @@ namespace ShippingEngine.Application.Services
 
 		public void ProcessShipments()
 		{
-			var orders = _dataService.GetOrders().ToList();
+			var orders = _dataService.GetShipments().ToList();
 
 			foreach (var order in orders.Where(o => o.Valid))
 				ProcessShipment(order);

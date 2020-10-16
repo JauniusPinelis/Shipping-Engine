@@ -13,7 +13,7 @@ namespace ShippingEngine.Application.Services
 {
 	public class DataService : IDataService
 	{
-		private readonly List<Shipment> _orders = new List<Shipment>();
+		private readonly List<Shipment> _shipments = new List<Shipment>();
 		private readonly List<Pricing> _pricings = new List<Pricing>();
 
 		public UserInfo _discountInfo = new UserInfo();
@@ -31,7 +31,7 @@ namespace ShippingEngine.Application.Services
 
 			var orders = orderData.Select(o => DataHelpers.ParseOrder(o));
 
-			_orders.AddRange(orders);
+			_shipments.AddRange(orders);
 		}
 
 		public void ImportPricings()
@@ -53,9 +53,9 @@ namespace ShippingEngine.Application.Services
 			return _pricings.FirstOrDefault(p => p.Provider == provider && p.Size == size).Price;
 		}
 
-		public IEnumerable<Shipment> GetOrders()
+		public IEnumerable<Shipment> GetShipments()
 		{
-			return _orders;
+			return _shipments;
 		}
 
 		public UserInfo GetDiscountInfo()

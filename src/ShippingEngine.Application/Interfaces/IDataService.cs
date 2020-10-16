@@ -11,7 +11,7 @@ namespace ShippingEngine.Application.Interfaces
 
 		void ImportPricings();
 
-		IEnumerable<Shipment> GetOrders();
+		IEnumerable<Shipment> GetShipments();
 
 		IEnumerable<Pricing> GetPricings();
 

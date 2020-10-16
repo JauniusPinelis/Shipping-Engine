@@ -21,13 +21,23 @@ namespace ShippingEngine.ApplicationTests
 		}
 
 		[Fact]
-		public void ImportDataTest()
+		public void ImportData_PricingsAreNotEmpty()
 		{
 			_pricingService.ImportData();
 
 			var pricings = _dataService.GetPricings();
 
 			pricings.Should().NotBeEmpty();
+		}
+
+		[Fact]
+		public void ImportData_ShipmentsAreNotEmpty()
+		{
+			_pricingService.ImportData();
+
+			var shipments = _dataService.GetShipments();
+
+			shipments.Should().NotBeEmpty();
 		}
 	}
 }
