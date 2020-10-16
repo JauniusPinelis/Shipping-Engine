@@ -10,12 +10,9 @@ namespace ShippingEngine.Application.Extensions
 {
     public static class OrderExtensions
     {
-        public static void Apply(this Order order, IDiscount discountStrategy)
+        public static void Apply(this Shipment order, IDiscount discountStrategy)
 		{
-            var discount = discountStrategy.ApplyDiscount();
-
-            order.Price = discount.Price;
-            order.Discount = discount.Saved;
+            discountStrategy.ApplyDiscount(order);
 		}
     }
 }

@@ -10,5 +10,7 @@ namespace ShippingEngine.Application.Interfaces
     {
         IEnumerable<string> ReadOrderData();
         IEnumerable<string> ReadPricingData();
+
+        void WriteToFile(IEnumerable<string> lines);
     }
 }

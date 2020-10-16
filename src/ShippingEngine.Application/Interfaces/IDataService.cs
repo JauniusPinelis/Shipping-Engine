@@ -1,4 +1,5 @@
 ﻿using ShippingEngine.Domain.Models;
+using System;
 using System.Collections.Generic;
 
 namespace ShippingEngine.Application.Interfaces
@@ -9,15 +10,15 @@ namespace ShippingEngine.Application.Interfaces
 
 		void ImportPricings();
 
-		IEnumerable<Order> GetOrders();
+		IEnumerable<Shipment> GetOrders();
 
 		IEnumerable<Pricing> GetPricings();
 
 		decimal GetPrice(string provider, string size);
 
 		UserInfo GetDiscountInfo();
-		void SaveDiscountInfo(UserInfo discountInfo);
-
-
+		void SaveDiscountInfo(DateTime date, decimal discount);
+		void TrackLargeOrders(DateTime date);
+		void ExportOrders(List<Shipment> orders);
 	}
 }

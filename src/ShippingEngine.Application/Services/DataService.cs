@@ -12,7 +12,7 @@ namespace ShippingEngine.Application.Services
 {
 	public class DataService : IDataService
 	{
-		private readonly List<Order> _orders = new List<Order>();
+		private readonly List<Shipment> _orders = new List<Shipment>();
 		private readonly List<Pricing> _pricings = new List<Pricing>();
 
 		public UserInfo _discountInfo = new UserInfo();
@@ -52,7 +52,7 @@ namespace ShippingEngine.Application.Services
 			return _pricings.FirstOrDefault(p => p.Provider == provider && p.Size == size).Price;
 		}
 
-		public IEnumerable<Order> GetOrders()
+		public IEnumerable<Shipment> GetOrders()
 		{
 			return _orders;
 		}
@@ -62,9 +62,28 @@ namespace ShippingEngine.Application.Services
 			return _discountInfo;
 		}
 
-		public void SaveDiscountInfo(UserInfo discountInfo)
+		public void SaveDiscountInfo(DateTime date, decimal discount)
 		{
-			_discountInfo = discountInfo;
+			_discountInfo.AccumulatedDiscountsAMonth
+				.Add(new Tuple<DateTime, decimal>(date, discount));
+		}
+
+		public void TrackLargeOrders(DateTime date)
+		{
+			if (_discountInfo.LargeShipmentsTrack.ContainsKey(date))
+			{
+				_discountInfo.LargeShipmentsTrack[date]++;
+			}
+			else
+			{
+				_discountInfo.LargeShipmentsTrack.Add(date, 1);
+			}
+		}
+
+		public void ExportOrders(List<Shipment> orders)
+		{
+			var output = orders.Select(o => o.ToString());
+			_fileService.WriteToFile(output);
 		}
 	}
 }

@@ -16,7 +16,7 @@ namespace ShippingEngine.Application.Factories
 			_dataService = dataService;
 		}
 
-		public IDiscount Build(Order order)
+		public IDiscount Build(Shipment order)
 		{
 			if (order.Size == "S")
 			{

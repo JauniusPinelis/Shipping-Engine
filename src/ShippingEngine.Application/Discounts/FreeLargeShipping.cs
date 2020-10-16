@@ -13,9 +13,22 @@ namespace ShippingEngine.Domain.Discounts
 			_dataService = dataService;
 		}
 
-		public Discount ApplyDiscount()
+		public void ApplyDiscount(Shipment order)
 		{
-			throw new System.NotImplementedException();
+			if (order.Size == "L")
+			{
+				var customerINfo = _dataService.GetDiscountInfo();
+
+				int orderCount;
+
+				bool outcome = customerINfo.LargeShipmentsTrack.TryGetValue(order.Date, out orderCount);
+
+				if (outcome)
+				{
+					order.Discount = order.Price;
+					order.Price = 0;
+				}
+			}
 		}
 	}
 }

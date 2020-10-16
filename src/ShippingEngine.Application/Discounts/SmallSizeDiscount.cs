@@ -18,9 +18,15 @@ namespace ShippingEngine.Application.Discounts
 			_dataService = dataService;
 		}
 
-		public Discount ApplyDiscount()
+		public void ApplyDiscount(Shipment order)
 		{
-			throw new NotImplementedException();
+			var smallestPrice = _dataService.GetPricings()
+				.Where(p => p.Size == order.Size).OrderBy(p => p.Size).First().Price;
+
+			order.Discount = order.Price - smallestPrice;
+			order.Price = smallestPrice;
+
+			_dataService.SaveDiscountInfo(order.Date, order.Discount.Value);
 		}
 	}
 }

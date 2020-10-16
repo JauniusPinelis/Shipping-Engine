@@ -9,13 +9,13 @@ namespace ShippingEngine.Application.Helpers
 {
     public static class DataHelpers
     {
-        public static Order ParseOrder(string orderData)
+        public static Shipment ParseOrder(string orderData)
 		{
             try
 			{
                 var elements = orderData.Split(' ');
 
-                return new Order()
+                return new Shipment()
                 {
                     Date = DateTime.Parse(elements[0]),
                     Size = elements[1],
@@ -24,7 +24,7 @@ namespace ShippingEngine.Application.Helpers
             }
             catch(Exception)
 			{
-                return new Order()
+                return new Shipment()
                 {
                     Valid = false
                 };

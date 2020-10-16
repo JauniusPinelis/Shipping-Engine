@@ -8,8 +8,8 @@ namespace ShippingEngine.Domain.Models
 {
     public class UserInfo
     {
-        public List<Tuple<DateTime, decimal>> AccumulatedDiscountsAMonth { get; set; }
+        public List<Tuple<DateTime, decimal>> AccumulatedDiscountsAMonth { get; set; } = new List<Tuple<DateTime, decimal>>();
 
-        public Dictionary<DateTime, int> LargeShipmentsAmonth { get; set; }
+        public Dictionary<DateTime, int> LargeShipmentsTrack { get; set; } = new Dictionary<DateTime, int>();
     }
 }
