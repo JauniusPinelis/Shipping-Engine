@@ -8,9 +8,6 @@
     <None Update="Data\Input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Data\Orders.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Data\Pricings.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

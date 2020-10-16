@@ -1,5 +1,6 @@
 ﻿using ShippingEngine.Application.Helpers;
 using ShippingEngine.Application.Interfaces;
+using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -47,7 +48,7 @@ namespace ShippingEngine.Application.Services
 			return _pricings;
 		}
 
-		public decimal GetPrice(string provider, string size)
+		public decimal GetPrice(Provider provider, string size)
 		{
 			return _pricings.FirstOrDefault(p => p.Provider == provider && p.Size == size).Price;
 		}
@@ -68,7 +69,7 @@ namespace ShippingEngine.Application.Services
 				.Add(new Tuple<DateTime, decimal>(date, discount));
 		}
 
-		public void TrackLargeOrders(DateTime date)
+		public void TrackLargeShipments(DateTime date)
 		{
 			if (_discountInfo.LargeShipmentsTrack.ContainsKey(date))
 			{

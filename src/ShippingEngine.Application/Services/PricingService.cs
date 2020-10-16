@@ -13,7 +13,6 @@ namespace ShippingEngine.Application.Services
     {
 		private readonly IDataService _dataService;
 		private readonly IDiscountFactory _discountFactory;
-		private readonly IFileService _fileService;
 
 		public PricingService( IDataService dataService, 
 			IDiscountFactory discountFactory)
@@ -22,12 +21,12 @@ namespace ShippingEngine.Application.Services
 			_discountFactory = discountFactory;
 		}
 
-		public void CalculateDiscounts()
+		public void ProcessShipments()
 		{
 			var orders = _dataService.GetOrders().ToList();
 
 			foreach (var order in orders.Where(o => o.Valid))
-				ProcessOrder(order);
+				ProcessShipment(order);
 
 			_dataService.ExportOrders(orders);
 		}
@@ -38,7 +37,7 @@ namespace ShippingEngine.Application.Services
 			_dataService.ImportPricings();
 		}
 
-		private void ProcessOrder(Shipment shipment)
+		private void ProcessShipment(Shipment shipment)
 		{
 			shipment.Price = _dataService.GetPrice(shipment.Provider, shipment.Size);
 
@@ -46,7 +45,7 @@ namespace ShippingEngine.Application.Services
 
 			if (shipment.Size == "L")
 			{
-				_dataService.TrackLargeOrders(shipment.Date);
+				_dataService.TrackLargeShipments(shipment.Date);
 			}
 		}
 

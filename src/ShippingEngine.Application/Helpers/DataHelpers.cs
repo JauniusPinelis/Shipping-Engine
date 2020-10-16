@@ -1,4 +1,6 @@
-﻿using ShippingEngine.Domain.Models;
+﻿using ShippingEngine.Domain.Enums;
+using ShippingEngine.Domain.Extensions;
+using ShippingEngine.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,7 @@ namespace ShippingEngine.Application.Helpers
                 {
                     Date = DateTime.Parse(elements[0]),
                     Size = elements[1],
-                    Provider = elements[2]
+                    Provider = elements[2].ToEnum<Provider>()
                 };
             }
             catch(Exception)
@@ -39,7 +41,7 @@ namespace ShippingEngine.Application.Helpers
 
                 return new Pricing()
                 {
-                    Provider = elements[0],
+                    Provider = elements[0].ToEnum<Provider>(),
                     Size = elements[1],
                     Price = Decimal.Parse(elements[2])
                 };

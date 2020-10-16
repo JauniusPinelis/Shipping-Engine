@@ -9,6 +9,6 @@ namespace ShippingEngine.Application.Interfaces
 	public interface IPricingService
 	{
 		void ImportData();
-		void CalculateDiscounts();
+		void ProcessShipments();
 	}
 }

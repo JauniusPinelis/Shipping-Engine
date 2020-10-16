@@ -8,17 +8,17 @@ namespace ShippingEngine.Application
 {
 	public class Runner
 	{
-		private readonly IPricingService _discountService;
+		private readonly IPricingService _pricingService;
 
-		public Runner(IPricingService discountService)
+		public Runner(IPricingService pricingService)
 		{
-			_discountService = discountService;
+			_pricingService = pricingService;
 		}
 
 		public void Run()
 		{
-			_discountService.ImportData();
-			_discountService.CalculateDiscounts();
+			_pricingService.ImportData();
+			_pricingService.ProcessShipments();
 		}
 	}
 }
