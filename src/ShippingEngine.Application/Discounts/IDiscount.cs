@@ -4,6 +4,6 @@ namespace ShippingEngine.Domain.Discounts
 {
 	public interface IDiscount
 	{
-		void ApplyDiscount(Shipment order);
+		(decimal?, decimal?) CalculatePriceDiscount(Shipment order);
 	}
 }

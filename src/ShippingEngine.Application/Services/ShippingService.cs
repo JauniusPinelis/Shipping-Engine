@@ -33,7 +33,7 @@ namespace ShippingEngine.Application.Services
 
 		private void ProcessShipment(Shipment shipment)
 		{
-			(decimal price, decimal discount) =
+			(decimal? price, decimal? discount) =
 				_pricingService.CalculatePriceDiscount(shipment);
 
 			shipment.Price = price;

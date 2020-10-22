@@ -1,4 +1,5 @@
-﻿using ShippingEngine.Application.Interfaces;
+﻿using ShippingEngine.Application.Extensions;
+using ShippingEngine.Application.Interfaces;
 using ShippingEngine.Domain.Models;
 
 namespace ShippingEngine.Application.Services
@@ -14,20 +15,19 @@ namespace ShippingEngine.Application.Services
 			_discountFactory = discountFactory;
 		}
 
-		public (decimal, decimal) CalculatePriceDiscount(Shipment shipment)
+		public (decimal?, decimal?) CalculatePriceDiscount(Shipment shipment)
 		{
-			var price = _dataService.GetPrice(shipment.Provider, shipment.Size);
+			decimal? price = _dataService.GetPrice(shipment.Provider, shipment.Size);
+			decimal? discount = 0.0M;
 
-			ApplyDiscount(shipment);
-		}
-
-		private void ApplyDiscount(Shipment shipment)
-		{
-			var discount = _discountFactory.Build(shipment);
-			if (discount != null)
+			var discountStrategy = _discountFactory.Build(shipment);
+			if (discountStrategy != null)
 			{
-				shipment.Apply(discount);
+				(price, discount) = shipment.Apply(discountStrategy);
 			}
+
+			return (price, discount);
 		}
+
 	}
 }

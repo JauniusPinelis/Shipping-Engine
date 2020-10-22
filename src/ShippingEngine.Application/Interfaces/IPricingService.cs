@@ -4,6 +4,6 @@ namespace ShippingEngine.Application.Interfaces
 {
 	public interface IPricingService
 	{
-		(decimal, decimal) CalculatePriceDiscount(Shipment shipment);
+		(decimal?, decimal?) CalculatePriceDiscount(Shipment shipment);
 	}
 }

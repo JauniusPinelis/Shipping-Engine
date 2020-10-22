@@ -13,7 +13,7 @@ namespace ShippingEngine.Domain.Discounts
 			_dataService = dataService;
 		}
 
-		public void ApplyDiscount(Shipment order)
+		public (decimal?, decimal?) CalculatePriceDiscount(Shipment order)
 		{
 			if (order.Size == "L")
 			{
@@ -25,10 +25,10 @@ namespace ShippingEngine.Domain.Discounts
 
 				if (outcome)
 				{
-					order.Discount = order.Price;
-					order.Price = 0;
+					return (0, order.Price.Value);
 				}
 			}
+			return (order.Price, order.Discount);
 		}
 	}
 }
