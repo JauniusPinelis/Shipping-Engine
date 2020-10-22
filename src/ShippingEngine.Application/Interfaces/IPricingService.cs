@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ShippingEngine.Domain.Models;
 
 namespace ShippingEngine.Application.Interfaces
 {
 	public interface IPricingService
 	{
-		void ImportData();
-		void ProcessShipments();
+		(decimal, decimal) CalculatePriceDiscount(Shipment shipment);
 	}
 }

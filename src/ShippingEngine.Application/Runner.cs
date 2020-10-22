@@ -1,24 +1,20 @@
 ﻿using ShippingEngine.Application.Interfaces;
-using ShippingEngine.Application.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ShippingEngine.Application
 {
 	public class Runner
 	{
-		private readonly IPricingService _pricingService;
+		private readonly IShippingService _shippingService;
 
-		public Runner(IPricingService pricingService)
+		public Runner(IShippingService shippingService)
 		{
-			_pricingService = pricingService;
+			_shippingService = shippingService;
 		}
 
 		public void Run()
 		{
-			_pricingService.ImportData();
-			_pricingService.ProcessShipments();
+			_shippingService.ImportData();
+			_shippingService.ProcessShipments();
 		}
 	}
 }

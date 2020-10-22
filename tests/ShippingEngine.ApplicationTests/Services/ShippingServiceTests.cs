@@ -1,29 +1,25 @@
 ﻿using FluentAssertions;
-using ShippingEngine.Application.Factories;
 using ShippingEngine.Application.Services;
 using ShippingEngine.ApplicationTests.Fixtures;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace ShippingEngine.ApplicationTests
 {
-	public class PricingServiceTests : IClassFixture<PricingServiceFixture>
+	public class ShippingServiceTests : IClassFixture<ShippingServiceFixture>
 	{
-		private readonly PricingService _pricingService;
+		private readonly ShippingService _shippingService;
 		private readonly DataService _dataService;
 
-		public PricingServiceTests(PricingServiceFixture pricingServiceFixture)
+		public ShippingServiceTests(ShippingServiceFixture pricingServiceFixture)
 		{
-			_pricingService = pricingServiceFixture.PricingService;
+			_shippingService = pricingServiceFixture.PricingService;
 			_dataService = pricingServiceFixture.DataService;
 		}
 
 		[Fact]
 		public void ImportData_PricingsAreNotEmpty()
 		{
-			_pricingService.ImportData();
+			_shippingService.ImportData();
 
 			var pricings = _dataService.GetPricings();
 
@@ -33,7 +29,7 @@ namespace ShippingEngine.ApplicationTests
 		[Fact]
 		public void ImportData_ShipmentsAreNotEmpty()
 		{
-			_pricingService.ImportData();
+			_shippingService.ImportData();
 
 			var shipments = _dataService.GetShipments();
 

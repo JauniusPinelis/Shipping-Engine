@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace ShippingEngine.ApplicationTests.Fixtures
 {
-    public class PricingServiceFixture
+    public class ShippingServiceFixture
     {
-		public readonly PricingService PricingService;
+		public readonly ShippingService PricingService;
 		public readonly DataService DataService;
 
-		public PricingServiceFixture()
+		public ShippingServiceFixture()
 		{
 			var _fileService = new FileService();
 			DataService = new DataService(_fileService);
 
 			var discountFactory = new DiscountFactory(DataService);
 
-			PricingService = new PricingService(DataService, discountFactory);
+			PricingService = new ShippingService(DataService, discountFactory);
 		}
 	}
 }
