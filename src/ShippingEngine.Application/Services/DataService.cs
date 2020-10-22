@@ -27,7 +27,7 @@ namespace ShippingEngine.Application.Services
 
 		public void ImportOrders()
 		{
-			var orderData = _fileService.ReadOrderData();
+			var orderData = _fileService.ReadOrdersFile();
 
 			var orders = orderData.Select(o => DataHelpers.ParseOrder(o));
 
@@ -36,21 +36,21 @@ namespace ShippingEngine.Application.Services
 
 		public void ImportPricings()
 		{
-			var pricingData = _fileService.ReadPricingData();
+			var pricingData = _fileService.ReadPricingsFile();
 
 			var pricings = pricingData.Select(p => DataHelpers.ParsePricing(p));
 
 			_pricings.AddRange(pricings);
 		}
 
-		public IEnumerable<Pricing> GetPricings()
-		{
-			return _pricings;
-		}
-
 		public decimal GetPrice(Provider provider, string size)
 		{
 			return _pricings.FirstOrDefault(p => p.Provider == provider && p.Size == size).Price;
+		}
+
+		public IEnumerable<Pricing> GetPricings()
+		{
+			return _pricings;
 		}
 
 		public IEnumerable<Shipment> GetShipments()

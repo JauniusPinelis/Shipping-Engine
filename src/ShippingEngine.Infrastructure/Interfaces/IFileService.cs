@@ -8,8 +8,8 @@ namespace ShippingEngine.Application.Interfaces
 {
     public interface IFileService
     {
-        IEnumerable<string> ReadOrderData();
-        IEnumerable<string> ReadPricingData();
+        IEnumerable<string> ReadOrdersFile();
+        IEnumerable<string> ReadPricingsFile();
 
         void WriteToFile(IEnumerable<string> lines);
     }
