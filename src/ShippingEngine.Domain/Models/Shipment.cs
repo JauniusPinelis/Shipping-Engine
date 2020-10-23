@@ -1,7 +1,5 @@
 ﻿using ShippingEngine.Domain.Enums;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ShippingEngine.Domain.Models
 {
@@ -18,7 +16,7 @@ namespace ShippingEngine.Domain.Models
 
 		public override string ToString()
 		{
-			return $"{Date} {Size} {Provider} {Price} {Discount}";
+			return $"{Date:yyyy-MM-dd} {Size} {Provider} {(Price.HasValue ? Price.Value.ToString("F") : "0.00")} {(Discount == 0 ? "-" : Discount.ToString())}";
 		}
 	}
 }

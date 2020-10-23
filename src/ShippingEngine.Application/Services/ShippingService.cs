@@ -33,14 +33,23 @@ namespace ShippingEngine.Application.Services
 
 		private void ProcessShipment(Shipment shipment)
 		{
-			(decimal? price, decimal? discount) =
-				_pricingService.CalculatePriceDiscount(shipment);
 
-			shipment.Price = price;
-			shipment.Discount = discount;
+			shipment.Price = _pricingService.CalculatePrice(shipment);
 
-			if (shipment.Discount.HasValue)
+			(decimal? price, decimal? discount) = _pricingService.CalculatePriceDiscount(shipment);
+
+			if (discount.HasValue)
+			{
+				shipment.Price = price;
+				shipment.Discount = discount;
+
 				_dataService.SaveDiscountInfo(shipment.Date, shipment.Discount.Value);
+			}
+
+			else
+			{
+				shipment.Discount = 0;
+			}
 
 			if (shipment.Size == "L")
 			{
@@ -50,7 +59,7 @@ namespace ShippingEngine.Application.Services
 
 		public void ExportData()
 		{
-
+			_dataService.ExportShipments();
 		}
 	}
 }

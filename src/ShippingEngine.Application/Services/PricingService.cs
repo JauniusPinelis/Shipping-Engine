@@ -17,7 +17,7 @@ namespace ShippingEngine.Application.Services
 
 		public (decimal?, decimal?) CalculatePriceDiscount(Shipment shipment)
 		{
-			decimal? price = _dataService.GetPrice(shipment.Provider, shipment.Size);
+			decimal? price = shipment.Price;
 			decimal? discount = 0.0M;
 
 			var discountStrategy = _discountFactory.Build(shipment);
@@ -27,6 +27,11 @@ namespace ShippingEngine.Application.Services
 			}
 
 			return (price, discount);
+		}
+
+		public decimal CalculatePrice(Shipment shipment)
+		{
+			return _dataService.GetPrice(shipment.Provider, shipment.Size);
 		}
 
 	}

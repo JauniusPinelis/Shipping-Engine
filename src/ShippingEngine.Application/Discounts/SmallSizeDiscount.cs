@@ -20,8 +20,6 @@ namespace ShippingEngine.Application.Discounts
 				.Where(p => p.Size == order.Size).OrderBy(p => p.Size).First().Price;
 
 			return (smallestPrice, order.Price - smallestPrice);
-
-			//_dataService.SaveDiscountInfo(order.Date, order.Discount.Value);
 		}
 	}
 }
