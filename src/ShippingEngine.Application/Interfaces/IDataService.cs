@@ -20,6 +20,7 @@ namespace ShippingEngine.Application.Interfaces
 		UserInfo GetDiscountInfo();
 		void SaveDiscountInfo(DateTime date, decimal discount);
 		void TrackLargeShipments(DateTime date);
-		void ExportOrders(List<Shipment> orders);
+		void ExportShipments();
+		void OverwriteShipments(List<Shipment> orders);
 	}
 }

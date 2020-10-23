@@ -22,7 +22,7 @@ namespace ShippingEngine.Application.Services
 			foreach (var order in orders.Where(o => o.Valid))
 				ProcessShipment(order);
 
-			_dataService.ExportOrders(orders);
+			_dataService.OverwriteShipments(orders);
 		}
 
 		public void ImportData()
@@ -38,6 +38,9 @@ namespace ShippingEngine.Application.Services
 
 			shipment.Price = price;
 			shipment.Discount = discount;
+
+			if (shipment.Discount.HasValue)
+				_dataService.SaveDiscountInfo(shipment.Date, shipment.Discount.Value);
 
 			if (shipment.Size == "L")
 			{

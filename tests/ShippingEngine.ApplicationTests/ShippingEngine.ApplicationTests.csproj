@@ -18,4 +18,10 @@
     <ProjectReference Include="..\..\src\ShippingEngine.Application\ShippingEngine.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\ProcessedOrders.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

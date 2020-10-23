@@ -5,15 +5,13 @@ using ShippingEngine.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShippingEngine.Application.Services
 {
 	public class DataService : IDataService
 	{
-		private readonly List<Shipment> _shipments = new List<Shipment>();
+		private List<Shipment> _shipments = new List<Shipment>();
+
 		private readonly List<Pricing> _pricings = new List<Pricing>();
 
 		public UserInfo _discountInfo = new UserInfo();
@@ -81,10 +79,15 @@ namespace ShippingEngine.Application.Services
 			}
 		}
 
-		public void ExportOrders(List<Shipment> orders)
+		public void ExportShipments()
 		{
-			var output = orders.Select(o => o.ToString());
+			var output = _shipments.Select(o => o.ToString());
 			_fileService.WriteToFile(output);
+		}
+
+		public void OverwriteShipments(List<Shipment> shipments)
+		{
+			_shipments = shipments;
 		}
 	}
 }
