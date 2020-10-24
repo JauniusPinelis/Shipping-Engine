@@ -1,5 +1,6 @@
 ﻿using ShippingEngine.Application.Interfaces;
 using ShippingEngine.Domain.Discounts;
+using ShippingEngine.Domain.Helpers;
 using ShippingEngine.Domain.Models;
 using System.Linq;
 
@@ -16,10 +17,26 @@ namespace ShippingEngine.Application.Discounts
 
 		public (decimal?, decimal?) CalculatePriceDiscount(Shipment order)
 		{
+			var customerInfo = _dataService.GetDiscountInfo();
+
+			var accumulatedDiscounts = customerInfo.AccumulatedDiscountsAMonth
+				.Where(a => a.Item1 == order.Date.RemoveDays()).Select(a => a.Item2).Sum();
+
+			var remainingDiscount = 10 - accumulatedDiscounts;
+
 			var smallestPrice = _dataService.GetPricings()
 				.Where(p => p.Size == order.Size).OrderBy(p => p.Size).First().Price;
 
-			return (smallestPrice, order.Price - smallestPrice);
+			var discount = order.Price.Value - smallestPrice;
+
+			if (discount > remainingDiscount)
+			{
+				smallestPrice = smallestPrice + (discount - remainingDiscount);
+				discount = remainingDiscount;
+
+			}
+
+			return (smallestPrice, discount);
 		}
 	}
 }
