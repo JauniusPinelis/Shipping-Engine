@@ -15,7 +15,6 @@ namespace ShippingEngine.ApplicationTests.Fixtures
 
 			DataService = new DataService(_fileService);
 
-
 			var discountFactory = new DiscountFactory(DataService);
 
 			var _pricingService = new PricingService(DataService, discountFactory);

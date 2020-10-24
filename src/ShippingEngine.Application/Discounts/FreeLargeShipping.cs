@@ -26,7 +26,6 @@ namespace ShippingEngine.Domain.Discounts
 
 				if (outcome && orderCount == 3)
 				{
-					//customerInfo.LargeShipmentsTrack.Remove(order.Date.RemoveDays());
 					return (0, order.Price.Value);
 				}
 			}

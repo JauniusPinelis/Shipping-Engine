@@ -52,7 +52,6 @@ namespace ShippingEngine.ApplicationTests
 
 			shipments.Count().Should().Be(outputData.Count);
 
-
 			for (int i = 0; i < shipments.Count(); i++)
 			{
 				var shipment = shipments[i].ToString();
