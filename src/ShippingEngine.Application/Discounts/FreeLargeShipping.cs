@@ -1,5 +1,6 @@
 ﻿
 using ShippingEngine.Application.Interfaces;
+using ShippingEngine.Domain.Helpers;
 using ShippingEngine.Domain.Models;
 
 namespace ShippingEngine.Domain.Discounts
@@ -17,14 +18,15 @@ namespace ShippingEngine.Domain.Discounts
 		{
 			if (order.Size == "L")
 			{
-				var customerINfo = _dataService.GetDiscountInfo();
+				var customerInfo = _dataService.GetDiscountInfo();
 
 				int orderCount;
 
-				bool outcome = customerINfo.LargeShipmentsTrack.TryGetValue(order.Date, out orderCount);
+				bool outcome = customerInfo.LargeShipmentsTrack.TryGetValue(order.Date.RemoveDays(), out orderCount);
 
-				if (outcome)
+				if (outcome && orderCount == 3)
 				{
+					//customerInfo.LargeShipmentsTrack.Remove(order.Date.RemoveDays());
 					return (0, order.Price.Value);
 				}
 			}

@@ -1,6 +1,7 @@
 ﻿using ShippingEngine.Application.Helpers;
 using ShippingEngine.Application.Interfaces;
 using ShippingEngine.Domain.Enums;
+using ShippingEngine.Domain.Helpers;
 using ShippingEngine.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -69,6 +70,7 @@ namespace ShippingEngine.Application.Services
 
 		public void TrackLargeShipments(DateTime date)
 		{
+			date = date.RemoveDays();
 			if (_discountInfo.LargeShipmentsTrack.ContainsKey(date))
 			{
 				_discountInfo.LargeShipmentsTrack[date]++;

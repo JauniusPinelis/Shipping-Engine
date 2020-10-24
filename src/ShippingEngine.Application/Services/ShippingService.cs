@@ -1,4 +1,5 @@
 ﻿using ShippingEngine.Application.Interfaces;
+using ShippingEngine.Domain.Helpers;
 using ShippingEngine.Domain.Models;
 using System.Linq;
 
@@ -43,7 +44,7 @@ namespace ShippingEngine.Application.Services
 				shipment.Price = price;
 				shipment.Discount = discount;
 
-				_dataService.SaveDiscountInfo(shipment.Date, shipment.Discount.Value);
+				_dataService.SaveDiscountInfo(shipment.Date.RemoveDays(), shipment.Discount.Value);
 			}
 
 			else
