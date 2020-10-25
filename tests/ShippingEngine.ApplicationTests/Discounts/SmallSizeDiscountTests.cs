@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using ShippingEngine.Application.Discounts;
-using ShippingEngine.Application.Extensions;
 using ShippingEngine.Application.Interfaces;
 using ShippingEngine.ApplicationTests.Fixtures;
 using ShippingEngine.Domain.Enums;
@@ -35,7 +34,7 @@ namespace ShippingEngine.ApplicationTests.Discounts
 				Price = price
 			};
 
-			var (discountPrice, discount) = shipment.Apply(SmallSizeDiscount);
+			var (discountPrice, discount) = SmallSizeDiscount.CalculatePriceDiscount(shipment);
 
 			discountPrice.Should().HaveValue();
 			discountPrice.Value.Should().Be(price);

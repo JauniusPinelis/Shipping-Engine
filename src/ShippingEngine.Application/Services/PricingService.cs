@@ -1,5 +1,4 @@
-﻿using ShippingEngine.Application.Extensions;
-using ShippingEngine.Application.Interfaces;
+﻿using ShippingEngine.Application.Interfaces;
 using ShippingEngine.Domain.Models;
 
 namespace ShippingEngine.Application.Services
@@ -23,7 +22,7 @@ namespace ShippingEngine.Application.Services
 			var discountStrategy = _discountFactory.Build(shipment);
 			if (discountStrategy != null)
 			{
-				(price, discount) = shipment.Apply(discountStrategy);
+				(price, discount) = discountStrategy.CalculatePriceDiscount(shipment);
 			}
 
 			return (price, discount);

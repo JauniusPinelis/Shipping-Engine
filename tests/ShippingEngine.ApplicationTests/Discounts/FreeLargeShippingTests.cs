@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using ShippingEngine.Application.Extensions;
 using ShippingEngine.Application.Interfaces;
 using ShippingEngine.ApplicationTests.Fixtures;
 using ShippingEngine.Domain.Discounts;
@@ -37,7 +36,7 @@ namespace ShippingEngine.ApplicationTests.Discounts
 				Provider = provider,
 			};
 
-			var (discountedPrice, discount) = shipment.Apply(freeLargeShippping);
+			var (discountedPrice, discount) = freeLargeShippping.CalculatePriceDiscount(shipment);
 
 			discountedPrice.Should().HaveValue();
 			discountedPrice.Value.Should().Be(price);
@@ -68,7 +67,7 @@ namespace ShippingEngine.ApplicationTests.Discounts
 				Provider = provider,
 			};
 
-			var (discountedPrice, discount) = shipment.Apply(freeLargeShippping);
+			var (discountedPrice, discount) = freeLargeShippping.CalculatePriceDiscount(shipment);
 
 			discountedPrice.Should().HaveValue();
 			discountedPrice.Value.Should().Be(0);
@@ -99,7 +98,7 @@ namespace ShippingEngine.ApplicationTests.Discounts
 				Provider = provider,
 			};
 
-			var (discountedPrice, discount) = shipment.Apply(freeLargeShippping);
+			var (discountedPrice, discount) = freeLargeShippping.CalculatePriceDiscount(shipment);
 
 			discountedPrice.Should().HaveValue();
 			discountedPrice.Value.Should().Be(price);
