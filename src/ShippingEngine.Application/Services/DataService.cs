@@ -11,12 +11,11 @@ namespace ShippingEngine.Application.Services
 	public class DataService : IDataService
 	{
 		private List<Shipment> _shipments = new List<Shipment>();
-
 		private readonly List<Pricing> _pricings = new List<Pricing>();
 
-		public UserInfo _discountInfo = new UserInfo();
-
 		private readonly IFileService _fileService;
+
+		public UserInfo _discountInfo = new UserInfo();
 
 		public DataService(IFileService fileService)
 		{
@@ -25,11 +24,11 @@ namespace ShippingEngine.Application.Services
 
 		public void ImportShipments()
 		{
-			var orderData = _fileService.ReadOrdersFile();
+			var shipmentData = _fileService.ReadShipmentsFile();
 
-			var orders = orderData.Select(o => DataHelpers.ParseShipment(o));
+			var shipments = shipmentData.Select(o => DataHelpers.ParseShipment(o));
 
-			_shipments.AddRange(orders);
+			_shipments.AddRange(shipments);
 		}
 
 		public void ImportPricings()
@@ -61,13 +60,13 @@ namespace ShippingEngine.Application.Services
 			return _discountInfo;
 		}
 
-		public void SaveDiscountInfo(DateTime date, decimal discount)
+		public void IncrementAccumulatedDiscounts(DateTime date, decimal discount)
 		{
 			_discountInfo.AccumulatedDiscountsAMonth
 				.Add(new Tuple<DateTime, decimal>(date, discount));
 		}
 
-		public void TrackLargeShipments(DateTime date)
+		public void IncrementLargeShipments(DateTime date)
 		{
 			date = date.RemoveDays();
 			if (_discountInfo.LargeShipmentsTrack.ContainsKey(date))
@@ -85,7 +84,7 @@ namespace ShippingEngine.Application.Services
 			_shipments = shipments;
 		}
 
-		public void ClearDiscounts()
+		public void ClearUserInfo()
 		{
 			_discountInfo = new UserInfo();
 		}

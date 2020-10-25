@@ -44,7 +44,7 @@ namespace ShippingEngine.Application.Services
 				shipment.Price = price;
 				shipment.Discount = discount;
 
-				_dataService.SaveDiscountInfo(shipment.Date.RemoveDays(), shipment.Discount.Value);
+				_dataService.IncrementAccumulatedDiscounts(shipment.Date.RemoveDays(), shipment.Discount.Value);
 			}
 
 			else

@@ -6,7 +6,6 @@ using ShippingEngine.Domain.Discounts;
 using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Models;
 using System;
-using System.Linq;
 using Xunit;
 
 namespace ShippingEngine.ApplicationTests.Discounts
@@ -28,20 +27,20 @@ namespace ShippingEngine.ApplicationTests.Discounts
 		{
 			var freeLargeShippping = new FreeLargeShipping(_dataService);
 
-			var pricing = _dataService.GetPricings().FirstOrDefault(p => p.Size == size && p.Provider == provider);
+			var price = _dataService.GetPrice(provider, size);
 
 			var shipment = new Shipment()
 			{
 				Date = new DateTime(2000, 1, 1),
 				Size = size,
-				Price = pricing.Price,
+				Price = price,
 				Provider = provider,
 			};
 
-			var (price, discount) = shipment.Apply(freeLargeShippping);
+			var (discountedPrice, discount) = shipment.Apply(freeLargeShippping);
 
-			price.Should().HaveValue();
-			price.Value.Should().Be(pricing.Price);
+			discountedPrice.Should().HaveValue();
+			discountedPrice.Value.Should().Be(price);
 
 			discount.Should().NotHaveValue();
 		}
@@ -51,31 +50,31 @@ namespace ShippingEngine.ApplicationTests.Discounts
 		public void CalculatePriceDiscount_LargeThirdTransfer_DiscountGetsApplied
 			(string size, Providers provider)
 		{
-			_dataService.ClearDiscounts();
+			_dataService.ClearUserInfo();
 			var date = new DateTime(2000, 1, 1);
 			var freeLargeShippping = new FreeLargeShipping(_dataService);
-			var pricing = _dataService.GetPricings().FirstOrDefault(p => p.Size == size && p.Provider == provider);
+			var price = _dataService.GetPrice(provider, size);
 
 
-			_dataService.TrackLargeShipments(date);
-			_dataService.TrackLargeShipments(date);
+			_dataService.IncrementLargeShipments(date);
+			_dataService.IncrementLargeShipments(date);
 
 
 			var shipment = new Shipment()
 			{
 				Date = new DateTime(2000, 1, 1),
 				Size = size,
-				Price = pricing.Price,
+				Price = price,
 				Provider = provider,
 			};
 
-			var (price, discount) = shipment.Apply(freeLargeShippping);
+			var (discountedPrice, discount) = shipment.Apply(freeLargeShippping);
 
-			price.Should().HaveValue();
-			price.Value.Should().Be(0);
+			discountedPrice.Should().HaveValue();
+			discountedPrice.Value.Should().Be(0);
 
 			discount.Should().HaveValue();
-			discount.Should().Be(pricing.Price);
+			discount.Should().Be(price);
 		}
 
 		[Theory]
@@ -86,24 +85,24 @@ namespace ShippingEngine.ApplicationTests.Discounts
 		{
 			var date = new DateTime(2000, 1, 1);
 			var freeLargeShippping = new FreeLargeShipping(_dataService);
-			var pricing = _dataService.GetPricings().FirstOrDefault(p => p.Size == size && p.Provider == provider);
+			var price = _dataService.GetPrice(provider, size);
 
-			_dataService.TrackLargeShipments(date);
-			_dataService.TrackLargeShipments(date);
+			_dataService.IncrementLargeShipments(date);
+			_dataService.IncrementLargeShipments(date);
 
 
 			var shipment = new Shipment()
 			{
 				Date = date,
 				Size = size,
-				Price = pricing.Price,
+				Price = price,
 				Provider = provider,
 			};
 
-			var (price, discount) = shipment.Apply(freeLargeShippping);
+			var (discountedPrice, discount) = shipment.Apply(freeLargeShippping);
 
-			price.Should().HaveValue();
-			price.Value.Should().Be(pricing.Price);
+			discountedPrice.Should().HaveValue();
+			discountedPrice.Value.Should().Be(price);
 
 			discount.Should().NotHaveValue();
 		}

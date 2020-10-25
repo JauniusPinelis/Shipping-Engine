@@ -4,7 +4,7 @@ namespace ShippingEngine.Application.Interfaces
 {
 	public interface IFileService
 	{
-		IEnumerable<string> ReadOrdersFile();
+		IEnumerable<string> ReadShipmentsFile();
 		IEnumerable<string> ReadPricingsFile();
 	}
 }

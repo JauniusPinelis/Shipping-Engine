@@ -6,7 +6,6 @@ using ShippingEngine.ApplicationTests.Fixtures;
 using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Models;
 using System;
-using System.Linq;
 using Xunit;
 
 namespace ShippingEngine.ApplicationTests.Discounts
@@ -26,20 +25,20 @@ namespace ShippingEngine.ApplicationTests.Discounts
 			var provider = Providers.LP;
 			var SmallSizeDiscount = new SmallSizeDiscount(_dataService);
 
-			var pricing = _dataService.GetPricings().FirstOrDefault(p => p.Size == size && p.Provider == provider);
+			var price = _dataService.GetPrice(provider, size);
 
 			var shipment = new Shipment()
 			{
 				Date = new DateTime(2000, 1, 1),
 				Size = size,
 				Provider = provider,
-				Price = pricing.Price
+				Price = price
 			};
 
-			var (price, discount) = shipment.Apply(SmallSizeDiscount);
+			var (discountPrice, discount) = shipment.Apply(SmallSizeDiscount);
 
-			price.Should().HaveValue();
-			price.Value.Should().Be(pricing.Price);
+			discountPrice.Should().HaveValue();
+			discountPrice.Value.Should().Be(price);
 
 			discount.Should().NotHaveValue();
 		}

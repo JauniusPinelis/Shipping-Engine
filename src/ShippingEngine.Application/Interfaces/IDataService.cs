@@ -18,9 +18,9 @@ namespace ShippingEngine.Application.Interfaces
 		decimal GetPrice(Providers provider, string size);
 
 		UserInfo GetDiscountInfo();
-		void SaveDiscountInfo(DateTime date, decimal discount);
-		void TrackLargeShipments(DateTime date);
+		void IncrementAccumulatedDiscounts(DateTime date, decimal discount);
+		void IncrementLargeShipments(DateTime date);
 		void OverwriteShipments(List<Shipment> orders);
-		void ClearDiscounts();
+		void ClearUserInfo();
 	}
 }

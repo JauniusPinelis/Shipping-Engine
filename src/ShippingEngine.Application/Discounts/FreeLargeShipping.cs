@@ -21,7 +21,7 @@ namespace ShippingEngine.Domain.Discounts
 			{
 				var customerInfo = _dataService.GetDiscountInfo();
 
-				_dataService.TrackLargeShipments(shipment.Date);
+				_dataService.IncrementLargeShipments(shipment.Date);
 
 				int orderCount;
 

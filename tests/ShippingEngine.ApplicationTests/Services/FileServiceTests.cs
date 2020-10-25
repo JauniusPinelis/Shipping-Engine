@@ -17,7 +17,7 @@ namespace ShippingEngine.ApplicationTests.Services
 		[Fact]
 		public void ReadOrdersFile_GivenOrdersFile_ServiceCanRead()
 		{
-			var ordersData = _fileService.ReadOrdersFile();
+			var ordersData = _fileService.ReadShipmentsFile();
 
 			ordersData.Should().NotBeEmpty();
 		}
@@ -25,7 +25,7 @@ namespace ShippingEngine.ApplicationTests.Services
 		[Fact]
 		public void ReadPricingsFile_GivenPricingsFile_ServiceCanRead()
 		{
-			var pricingsData = _fileService.ReadOrdersFile();
+			var pricingsData = _fileService.ReadShipmentsFile();
 
 			pricingsData.Should().NotBeEmpty();
 		}

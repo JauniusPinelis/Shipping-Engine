@@ -11,7 +11,7 @@ namespace ShippingEngine.Application.Services
 		private const string orderDataFilePath = "Data/Orders.txt";
 		private const string pricingDataFilePath = "Data/Pricings.txt";
 
-		public IEnumerable<string> ReadOrdersFile()
+		public IEnumerable<string> ReadShipmentsFile()
 		{
 			return ReadData(orderDataFilePath);
 		}
