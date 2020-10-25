@@ -8,8 +8,8 @@
 ## To Run
 
     There are two ways to run the application and tests:
-    * Use Node.js 'npm run start' and 'npm run tests' in command-line.
-    * Open the solution with Visual Studio and press F5 (Run) or Ctrl-R, A (Run All Tests)
+    - Use Node.js 'npm run start' and 'npm run tests' in command-line.
+    - Open the solution with Visual Studio and press F5 (Run) or Ctrl-R, A (Run All Tests)
 
 ## Architecture decisions
 
