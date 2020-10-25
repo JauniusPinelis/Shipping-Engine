@@ -17,7 +17,7 @@ namespace ShippingEngine.Domain.Discounts
 
 		public (decimal?, decimal?) CalculatePriceDiscount(Shipment shipment)
 		{
-			if (shipment.Size == "L" && shipment.Provider == Providers.LP)
+			if (shipment.Size == Sizes.L && shipment.Provider == Providers.LP)
 			{
 				var customerInfo = _dataService.GetDiscountInfo();
 

@@ -7,7 +7,7 @@ namespace ShippingEngine.Domain.Models
 	{
 		public DateTime Date { get; set; }
 		public Providers Provider { get; set; }
-		public string Size { get; set; }
+		public Sizes Size { get; set; }
 
 		public bool Valid { get; set; } = true;
 		public string ErrorMessage { get; set; }

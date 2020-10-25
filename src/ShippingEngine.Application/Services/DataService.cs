@@ -40,7 +40,7 @@ namespace ShippingEngine.Application.Services
 			_pricings.AddRange(pricings);
 		}
 
-		public decimal GetPrice(Providers provider, string size)
+		public decimal GetPrice(Providers provider, Sizes size)
 		{
 			return _pricings.FirstOrDefault(p => p.Provider == provider && p.Size == size).Price;
 		}

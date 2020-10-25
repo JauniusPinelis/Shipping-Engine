@@ -21,7 +21,7 @@ namespace ShippingEngine.ApplicationTests.Discounts
 		[Fact]
 		public void CalculatePriceDiscount_GivenLargeSize_DoesNotApplyDiscount()
 		{
-			var size = "L";
+			var size = Sizes.L;
 			var provider = Providers.LP;
 			var SmallSizeDiscount = new SmallSizeDiscount(_dataService);
 

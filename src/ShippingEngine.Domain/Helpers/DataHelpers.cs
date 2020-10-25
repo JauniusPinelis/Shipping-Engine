@@ -16,7 +16,7 @@ namespace ShippingEngine.Domain.Helpers
 				return new Shipment()
 				{
 					Date = DateTime.Parse(elements[0]),
-					Size = elements[1],
+					Size = elements[1].ToEnum<Sizes>(),
 					Provider = elements[2].ToEnum<Providers>()
 				};
 			}
@@ -39,7 +39,7 @@ namespace ShippingEngine.Domain.Helpers
 				return new Pricing()
 				{
 					Provider = elements[0].ToEnum<Providers>(),
-					Size = elements[1],
+					Size = elements[1].ToEnum<Sizes>(),
 					Price = Decimal.Parse(elements[2])
 				};
 			}

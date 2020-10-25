@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using ShippingEngine.Application.Interfaces;
 using ShippingEngine.ApplicationTests.Fixtures;
+using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Models;
 using Xunit;
 
@@ -16,9 +17,9 @@ namespace ShippingEngine.ApplicationTests.Factories
 		}
 
 		[Theory]
-		[InlineData("S")]
-		[InlineData("L")]
-		public void Build_GivenValidSize_CreatesValidDiscount(string size)
+		[InlineData(Sizes.S)]
+		[InlineData(Sizes.L)]
+		public void Build_GivenValidSize_CreatesValidDiscount(Sizes size)
 		{
 			var shipment = new Shipment()
 			{
@@ -31,8 +32,8 @@ namespace ShippingEngine.ApplicationTests.Factories
 		}
 
 		[Theory]
-		[InlineData("R")]
-		public void Build_GivenInValid_ReturnsNull(string size)
+		[InlineData(Sizes.M)]
+		public void Build_GivenInValid_ReturnsNull(Sizes size)
 		{
 			var shipment = new Shipment()
 			{

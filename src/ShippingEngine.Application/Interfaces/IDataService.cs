@@ -15,7 +15,7 @@ namespace ShippingEngine.Application.Interfaces
 
 		IEnumerable<Pricing> GetPricings();
 
-		decimal GetPrice(Providers provider, string size);
+		decimal GetPrice(Providers provider, Sizes size);
 
 		UserInfo GetDiscountInfo();
 		void IncrementAccumulatedDiscounts(DateTime date, decimal discount);

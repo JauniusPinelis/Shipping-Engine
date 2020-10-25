@@ -19,11 +19,11 @@ namespace ShippingEngine.ApplicationTests.Discounts
 		}
 
 		[Theory]
-		[InlineData("S", Providers.LP)]
-		[InlineData("M", Providers.LP)]
-		[InlineData("L", Providers.LP)]
+		[InlineData(Sizes.S, Providers.LP)]
+		[InlineData(Sizes.M, Providers.LP)]
+		[InlineData(Sizes.L, Providers.LP)]
 		public void CalculatePriceDiscount_NoShipments_DoesNotApplyDiscount
-			(string size, Providers provider)
+			(Sizes size, Providers provider)
 		{
 			var freeLargeShippping = new FreeLargeShipping(_dataService);
 
@@ -46,9 +46,9 @@ namespace ShippingEngine.ApplicationTests.Discounts
 		}
 
 		[Theory]
-		[InlineData("L", Providers.LP)]
+		[InlineData(Sizes.L, Providers.LP)]
 		public void CalculatePriceDiscount_LargeThirdTransfer_DiscountGetsApplied
-			(string size, Providers provider)
+			(Sizes size, Providers provider)
 		{
 			_dataService.ClearUserInfo();
 			var date = new DateTime(2000, 1, 1);
@@ -78,10 +78,10 @@ namespace ShippingEngine.ApplicationTests.Discounts
 		}
 
 		[Theory]
-		[InlineData("M", Providers.LP)]
-		[InlineData("S", Providers.LP)]
+		[InlineData(Sizes.M, Providers.LP)]
+		[InlineData(Sizes.S, Providers.LP)]
 		public void CalculatePriceDiscount_NonLargeThirdTransfer_DiscountNotApplied
-			(string size, Providers provider)
+			(Sizes size, Providers provider)
 		{
 			var date = new DateTime(2000, 1, 1);
 			var freeLargeShippping = new FreeLargeShipping(_dataService);
