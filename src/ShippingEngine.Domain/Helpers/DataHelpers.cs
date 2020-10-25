@@ -3,15 +3,15 @@ using ShippingEngine.Domain.Extensions;
 using ShippingEngine.Domain.Models;
 using System;
 
-namespace ShippingEngine.Application.Helpers
+namespace ShippingEngine.Domain.Helpers
 {
 	public static class DataHelpers
 	{
-		public static Shipment ParseOrder(string orderData)
+		public static Shipment ParseShipment(string shipmentData)
 		{
 			try
 			{
-				var elements = orderData.Split(' ');
+				var elements = shipmentData.Split(' ');
 
 				return new Shipment()
 				{
@@ -20,11 +20,11 @@ namespace ShippingEngine.Application.Helpers
 					Provider = elements[2].ToEnum<Providers>()
 				};
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				return new Shipment()
 				{
-					ErrorMessage = orderData + " Ignored",
+					ErrorMessage = shipmentData + " Ignored",
 					Valid = false
 				};
 			}

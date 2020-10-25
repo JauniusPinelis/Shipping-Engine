@@ -1,5 +1,4 @@
-﻿using ShippingEngine.Application.Helpers;
-using ShippingEngine.Application.Interfaces;
+﻿using ShippingEngine.Application.Interfaces;
 using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Helpers;
 using ShippingEngine.Domain.Models;
@@ -28,7 +27,7 @@ namespace ShippingEngine.Application.Services
 		{
 			var orderData = _fileService.ReadOrdersFile();
 
-			var orders = orderData.Select(o => DataHelpers.ParseOrder(o));
+			var orders = orderData.Select(o => DataHelpers.ParseShipment(o));
 
 			_shipments.AddRange(orders);
 		}
