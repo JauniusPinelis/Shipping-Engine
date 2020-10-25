@@ -26,12 +26,6 @@ namespace ShippingEngine.Application.Services
 			_dataService.OverwriteShipments(shipments);
 		}
 
-		public void ImportData()
-		{
-			_dataService.ImportShipments();
-			_dataService.ImportPricings();
-		}
-
 		private void ProcessShipment(Shipment shipment)
 		{
 

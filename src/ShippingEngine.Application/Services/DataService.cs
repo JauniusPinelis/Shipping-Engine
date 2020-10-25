@@ -22,7 +22,13 @@ namespace ShippingEngine.Application.Services
 			_fileService = fileService;
 		}
 
-		public void ImportShipments()
+		public void SetupData()
+		{
+			ImportShipments();
+			ImportPricings();
+		}
+
+		private void ImportShipments()
 		{
 			var shipmentData = _fileService.ReadShipmentsFile();
 
@@ -31,7 +37,7 @@ namespace ShippingEngine.Application.Services
 			_shipments.AddRange(shipments);
 		}
 
-		public void ImportPricings()
+		private void ImportPricings()
 		{
 			var pricingData = _fileService.ReadPricingsFile();
 

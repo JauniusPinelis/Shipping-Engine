@@ -7,9 +7,6 @@ namespace ShippingEngine.Application.Interfaces
 {
 	public interface IDataService
 	{
-		void ImportShipments();
-
-		void ImportPricings();
 
 		IEnumerable<Shipment> GetShipments();
 
@@ -22,5 +19,6 @@ namespace ShippingEngine.Application.Interfaces
 		void IncrementLargeShipments(DateTime date);
 		void OverwriteShipments(List<Shipment> shipments);
 		void ClearUserInfo();
+		void SetupData();
 	}
 }

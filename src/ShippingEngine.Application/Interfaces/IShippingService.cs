@@ -2,7 +2,7 @@
 {
 	public interface IShippingService
 	{
-		void ImportData();
+
 		void ProcessShipments();
 	}
 }

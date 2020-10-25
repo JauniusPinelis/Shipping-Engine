@@ -24,3 +24,13 @@ There are two ways to run the application and tests:
   - File service - responsible for reading text files
   - Data service - services which holds all the data regarding app, could be replaced by database
   - Pricing - services which calculates prices and discounts for shipments.
+- Pricing Service first calculate the prices, then creates a discount using DiscountFactory
+based on shipment properties
+- The Application has automated tests covering the main parts of the code. ApplicationTests has
+a full End-To-End tests which compares every printed line with a line in results file.
+
+### Possible improvements
+
+- Not every service is covered with unit tests
+- I am personally not happy with DataService, I feel like InMemory EntityFramework Core Repositories
+would have been a better approach rather than coding every method by myself. DataService is messy.

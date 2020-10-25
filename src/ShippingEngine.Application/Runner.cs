@@ -16,7 +16,8 @@ namespace ShippingEngine.Application
 
 		public void Run()
 		{
-			_shippingService.ImportData();
+			_dataService.SetupData();
+
 			_shippingService.ProcessShipments();
 
 			DisplayResults();

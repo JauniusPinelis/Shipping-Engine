@@ -22,8 +22,6 @@ namespace ShippingEngine.ApplicationTests
 		[Fact]
 		public void ImportData_PricingsAreNotEmpty()
 		{
-			_shippingService.ImportData();
-
 			var pricings = _dataService.GetPricings();
 
 			pricings.Should().NotBeEmpty();
@@ -32,8 +30,6 @@ namespace ShippingEngine.ApplicationTests
 		[Fact]
 		public void ImportData_ShipmentsAreNotEmpty()
 		{
-			_shippingService.ImportData();
-
 			var shipments = _dataService.GetShipments();
 
 			shipments.Should().NotBeEmpty();
@@ -42,7 +38,6 @@ namespace ShippingEngine.ApplicationTests
 		[Fact]
 		public void ProcessOrders_GivenInputFile_InputMatchesOutput()
 		{
-			_shippingService.ImportData();
 			_shippingService.ProcessShipments();
 
 			var shipments = _dataService.GetShipments().ToList();
