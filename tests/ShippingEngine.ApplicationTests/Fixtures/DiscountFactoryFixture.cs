@@ -7,7 +7,7 @@ namespace ShippingEngine.ApplicationTests.Fixtures
 	{
 		public IDiscountFactory DiscountFactory { get; set; }
 
-		public DiscountFactoryFixture() : base()
+		public DiscountFactoryFixture()
 		{
 			DiscountFactory = new DiscountFactory(DataService);
 		}

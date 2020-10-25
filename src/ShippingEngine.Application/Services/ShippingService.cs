@@ -28,7 +28,7 @@ namespace ShippingEngine.Application.Services
 
 		public void ImportData()
 		{
-			_dataService.ImportOrders();
+			_dataService.ImportShipments();
 			_dataService.ImportPricings();
 		}
 
@@ -51,11 +51,6 @@ namespace ShippingEngine.Application.Services
 			{
 				shipment.Discount = 0;
 			}
-		}
-
-		public void ExportData()
-		{
-			_dataService.ExportShipments();
 		}
 	}
 }

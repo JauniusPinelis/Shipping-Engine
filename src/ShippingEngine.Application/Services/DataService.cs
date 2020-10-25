@@ -23,7 +23,7 @@ namespace ShippingEngine.Application.Services
 			_fileService = fileService;
 		}
 
-		public void ImportOrders()
+		public void ImportShipments()
 		{
 			var orderData = _fileService.ReadOrdersFile();
 
@@ -78,12 +78,6 @@ namespace ShippingEngine.Application.Services
 			{
 				_discountInfo.LargeShipmentsTrack.Add(date, 1);
 			}
-		}
-
-		public void ExportShipments()
-		{
-			var output = _shipments.Select(o => o.ToString());
-			_fileService.WriteToFile(output);
 		}
 
 		public void OverwriteShipments(List<Shipment> shipments)

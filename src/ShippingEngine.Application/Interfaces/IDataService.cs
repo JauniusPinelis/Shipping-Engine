@@ -7,7 +7,7 @@ namespace ShippingEngine.Application.Interfaces
 {
 	public interface IDataService
 	{
-		void ImportOrders();
+		void ImportShipments();
 
 		void ImportPricings();
 
@@ -20,7 +20,6 @@ namespace ShippingEngine.Application.Interfaces
 		UserInfo GetDiscountInfo();
 		void SaveDiscountInfo(DateTime date, decimal discount);
 		void TrackLargeShipments(DateTime date);
-		void ExportShipments();
 		void OverwriteShipments(List<Shipment> orders);
 		void ClearDiscounts();
 	}
