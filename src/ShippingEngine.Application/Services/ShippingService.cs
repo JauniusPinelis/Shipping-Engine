@@ -51,11 +51,6 @@ namespace ShippingEngine.Application.Services
 			{
 				shipment.Discount = 0;
 			}
-
-			if (shipment.Size == "L")
-			{
-				_dataService.TrackLargeShipments(shipment.Date);
-			}
 		}
 
 		public void ExportData()

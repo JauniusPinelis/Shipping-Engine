@@ -1,5 +1,6 @@
 ﻿
 using ShippingEngine.Application.Interfaces;
+using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Helpers;
 using ShippingEngine.Domain.Models;
 
@@ -14,22 +15,24 @@ namespace ShippingEngine.Domain.Discounts
 			_dataService = dataService;
 		}
 
-		public (decimal?, decimal?) CalculatePriceDiscount(Shipment order)
+		public (decimal?, decimal?) CalculatePriceDiscount(Shipment shipment)
 		{
-			if (order.Size == "L")
+			if (shipment.Size == "L" && shipment.Provider == Provider.LP)
 			{
 				var customerInfo = _dataService.GetDiscountInfo();
 
+				_dataService.TrackLargeShipments(shipment.Date);
+
 				int orderCount;
 
-				bool outcome = customerInfo.LargeShipmentsTrack.TryGetValue(order.Date.RemoveDays(), out orderCount);
+				bool outcome = customerInfo.LargeShipmentsTrack.TryGetValue(shipment.Date.RemoveDays(), out orderCount);
 
 				if (outcome && orderCount == 3)
 				{
-					return (0, order.Price.Value);
+					return (0, shipment.Price.Value);
 				}
 			}
-			return (order.Price, order.Discount);
+			return (shipment.Price, shipment.Discount);
 		}
 	}
 }
