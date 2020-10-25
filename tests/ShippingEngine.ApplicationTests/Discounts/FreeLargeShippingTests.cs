@@ -11,10 +11,10 @@ using Xunit;
 
 namespace ShippingEngine.ApplicationTests.Discounts
 {
-	public class FreeLargeShippingTests : IClassFixture<DiscountFixture>
+	public class FreeLargeShippingTests : IClassFixture<DataServiceFixture>
 	{
 		private readonly IDataService _dataService;
-		public FreeLargeShippingTests(DiscountFixture fixture)
+		public FreeLargeShippingTests(DataServiceFixture fixture)
 		{
 			_dataService = fixture.DataService;
 		}

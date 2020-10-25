@@ -3,11 +3,11 @@ using ShippingEngine.Application.Services;
 
 namespace ShippingEngine.ApplicationTests.Fixtures
 {
-	public class DiscountFixture
+	public class DataServiceFixture
 	{
 		public readonly IDataService DataService;
 
-		public DiscountFixture()
+		public DataServiceFixture()
 		{
 			var _fileService = new FileService();
 			DataService = new DataService(_fileService);

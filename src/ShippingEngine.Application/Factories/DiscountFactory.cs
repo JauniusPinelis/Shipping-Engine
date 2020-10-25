@@ -1,9 +1,7 @@
-﻿using ShippingEngine.Application.Interfaces;
-using ShippingEngine.Domain.Models;
+﻿using ShippingEngine.Application.Discounts;
+using ShippingEngine.Application.Interfaces;
 using ShippingEngine.Domain.Discounts;
-using System;
-using ShippingEngine.Application.Discounts;
-using ShippingEngine.Application.Services;
+using ShippingEngine.Domain.Models;
 
 namespace ShippingEngine.Application.Factories
 {
