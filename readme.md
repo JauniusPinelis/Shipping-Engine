@@ -9,15 +9,18 @@
 
 ### To Run
 
-    There are two ways to run the application and tests:
-    - Use Node.js 'npm run start' and 'npm run tests' in command-line.
-    - Open the solution with Visual Studio and press F5 (Run) or Ctrl-R, A (Run All Tests)
+There are two ways to run the application and tests:
+
+- Use Node.js 'npm run start' and 'npm run tests' in command-line.
+- Open the solution with Visual Studio and press F5 (Run) or Ctrl-R, A (Run All Tests)
 
 ## Architecture
 
-
 ### Architectural decisions
-    - File/Folder structure is done followed Domain Driven Design
-    - The solution is logically divided into 4 services:
-        * Shipping Service - main service responsible for processing shipments
-        * File Service
+
+- File/Folder structure is done followed Domain Driven Design
+- The solution is logically divided into 4 services:
+  - Shipping service - main service responsible for processing shipments
+  - File service - responsible for reading text files
+  - Data service - services which holds all the data regarding app, could be replaced by database
+  - Pricing - services which calculates prices and discounts for shipments.
