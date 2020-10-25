@@ -18,12 +18,12 @@ namespace ShippingEngine.Application.Services
 
 		public void ProcessShipments()
 		{
-			var orders = _dataService.GetShipments().ToList();
+			var shipments = _dataService.GetShipments().ToList();
 
-			foreach (var order in orders.Where(o => o.Valid))
-				ProcessShipment(order);
+			foreach (var shipment in shipments.Where(o => o.Valid))
+				ProcessShipment(shipment);
 
-			_dataService.OverwriteShipments(orders);
+			_dataService.OverwriteShipments(shipments);
 		}
 
 		public void ImportData()

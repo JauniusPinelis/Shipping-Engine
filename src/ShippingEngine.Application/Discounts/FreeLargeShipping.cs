@@ -23,11 +23,11 @@ namespace ShippingEngine.Domain.Discounts
 
 				_dataService.IncrementLargeShipments(shipment.Date);
 
-				int orderCount;
+				int count;
 
-				bool outcome = customerInfo.LargeShipmentsTrack.TryGetValue(shipment.Date.RemoveDays(), out orderCount);
+				bool outcome = customerInfo.LargeShipmentsTrack.TryGetValue(shipment.Date.RemoveDays(), out count);
 
-				if (outcome && orderCount == 3)
+				if (outcome && count == 3)
 				{
 					return (0, shipment.Price.Value);
 				}

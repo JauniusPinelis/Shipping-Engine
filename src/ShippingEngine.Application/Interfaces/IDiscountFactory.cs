@@ -4,6 +4,6 @@ namespace ShippingEngine.Application.Interfaces
 {
 	public interface IDiscountFactory
 	{
-		IDiscount Build(Shipment order);
+		IDiscount Build(Shipment shipment);
 	}
 }

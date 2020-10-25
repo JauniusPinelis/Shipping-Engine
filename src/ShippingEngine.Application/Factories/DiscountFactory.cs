@@ -15,13 +15,13 @@ namespace ShippingEngine.Application.Factories
 			_dataService = dataService;
 		}
 
-		public IDiscount Build(Shipment order)
+		public IDiscount Build(Shipment shipment)
 		{
-			if (order.Size == Sizes.S)
+			if (shipment.Size == Sizes.S)
 			{
 				return new SmallSizeDiscount(_dataService);
 			}
-			if (order.Size == Sizes.L)
+			if (shipment.Size == Sizes.L)
 			{
 				return new FreeLargeShipping(_dataService);
 			}

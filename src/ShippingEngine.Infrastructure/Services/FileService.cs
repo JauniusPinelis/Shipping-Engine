@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace ShippingEngine.Application.Services
 {
@@ -24,6 +25,7 @@ namespace ShippingEngine.Application.Services
 		private IEnumerable<string> ReadData(string filePath)
 		{
 			var fullPath = Path.Combine(Environment.CurrentDirectory, filePath);
+			var fullPath2 = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 			return File.ReadAllLines(fullPath).ToList();
 		}
 	}

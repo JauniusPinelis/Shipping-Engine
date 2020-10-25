@@ -20,7 +20,7 @@ namespace ShippingEngine.Application.Interfaces
 		UserInfo GetDiscountInfo();
 		void IncrementAccumulatedDiscounts(DateTime date, decimal discount);
 		void IncrementLargeShipments(DateTime date);
-		void OverwriteShipments(List<Shipment> orders);
+		void OverwriteShipments(List<Shipment> shipments);
 		void ClearUserInfo();
 	}
 }
