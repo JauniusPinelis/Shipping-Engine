@@ -6,6 +6,7 @@ using ShippingEngine.Domain.Discounts;
 using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Models;
 using System;
+using System.Linq;
 using Xunit;
 
 namespace ShippingEngine.ApplicationTests.Discounts
@@ -28,8 +29,9 @@ namespace ShippingEngine.ApplicationTests.Discounts
 				Date = new DateTime(2000, 1, 1),
 				Size = "S",
 				Provider = Provider.LP,
-				Price = 2
 			};
+
+			var pricing = _dataService.GetPricings().Where(p => p.Size == )
 
 			var (price, discount) = shipment.Apply(freeLargeShippping);
 
@@ -38,7 +40,6 @@ namespace ShippingEngine.ApplicationTests.Discounts
 
 			discount.Should().NotHaveValue();
 		}
-
 
 		[Fact]
 		public void CalculatePriceDiscount_GivenLargeSizeWith0TransfersThisMonths_DoesNotApplyDiscount()
@@ -50,7 +51,6 @@ namespace ShippingEngine.ApplicationTests.Discounts
 				Date = new DateTime(2000, 1, 1),
 				Size = "L",
 				Provider = Provider.LP,
-				Price = 2
 			};
 
 			var (price, discount) = shipment.Apply(freeLargeShippping);
@@ -60,6 +60,7 @@ namespace ShippingEngine.ApplicationTests.Discounts
 
 			discount.Should().NotHaveValue();
 		}
+
 
 		[Fact]
 		public void CalculatePriceDiscount_ThisLargeTransfer_DiscountGetsApplied()
@@ -75,7 +76,6 @@ namespace ShippingEngine.ApplicationTests.Discounts
 				Date = new DateTime(2000, 1, 1),
 				Size = "L",
 				Provider = Provider.LP,
-				Price = 2
 			};
 
 			var (price, discount) = shipment.Apply(freeLargeShippping);

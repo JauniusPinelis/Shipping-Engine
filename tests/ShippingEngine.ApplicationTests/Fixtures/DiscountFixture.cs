@@ -11,6 +11,8 @@ namespace ShippingEngine.ApplicationTests.Fixtures
 		{
 			var _fileService = new FileService();
 			DataService = new DataService(_fileService);
+
+			DataService.ImportPricings();
 		}
 	}
 }

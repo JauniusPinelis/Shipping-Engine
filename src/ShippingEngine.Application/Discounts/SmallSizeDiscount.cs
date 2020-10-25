@@ -33,7 +33,6 @@ namespace ShippingEngine.Application.Discounts
 			{
 				smallestPrice = smallestPrice + (discount - remainingDiscount);
 				discount = remainingDiscount;
-
 			}
 
 			return (smallestPrice, discount);
