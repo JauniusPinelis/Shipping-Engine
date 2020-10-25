@@ -9,7 +9,7 @@ namespace ShippingEngine.Domain.Models
 {
     public class Pricing
     {
-        public Provider Provider { get; set; }
+        public Providers Provider { get; set; }
         public string Size { get; set; }
         public decimal Price { get; set; }
     }

@@ -6,7 +6,7 @@ namespace ShippingEngine.Domain.Models
 	public class Shipment
 	{
 		public DateTime Date { get; set; }
-		public Provider Provider { get; set; }
+		public Providers Provider { get; set; }
 		public string Size { get; set; }
 
 		public bool Valid { get; set; } = true;

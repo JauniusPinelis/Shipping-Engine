@@ -19,63 +19,54 @@ namespace ShippingEngine.ApplicationTests.Discounts
 			_dataService = fixture.DataService;
 		}
 
-		[Fact]
-		public void CalculatePriceDiscount_GivenSmallSize_DoesNotApplyDiscount()
+		[Theory]
+		[InlineData("S", Providers.LP)]
+		[InlineData("M", Providers.LP)]
+		[InlineData("L", Providers.LP)]
+		public void CalculatePriceDiscount_NoShipments_DoesNotApplyDiscount
+			(string size, Providers provider)
 		{
 			var freeLargeShippping = new FreeLargeShipping(_dataService);
+
+			var pricing = _dataService.GetPricings().FirstOrDefault(p => p.Size == size && p.Provider == provider);
 
 			var shipment = new Shipment()
 			{
 				Date = new DateTime(2000, 1, 1),
-				Size = "S",
-				Provider = Provider.LP,
-			};
-
-			var pricing = _dataService.GetPricings().Where(p => p.Size == )
-
-			var (price, discount) = shipment.Apply(freeLargeShippping);
-
-			price.Should().HaveValue();
-			price.Value.Should().Be(2);
-
-			discount.Should().NotHaveValue();
-		}
-
-		[Fact]
-		public void CalculatePriceDiscount_GivenLargeSizeWith0TransfersThisMonths_DoesNotApplyDiscount()
-		{
-			var freeLargeShippping = new FreeLargeShipping(_dataService);
-
-			var shipment = new Shipment()
-			{
-				Date = new DateTime(2000, 1, 1),
-				Size = "L",
-				Provider = Provider.LP,
+				Size = size,
+				Price = pricing.Price,
+				Provider = provider,
 			};
 
 			var (price, discount) = shipment.Apply(freeLargeShippping);
 
 			price.Should().HaveValue();
-			price.Value.Should().Be(2);
+			price.Value.Should().Be(pricing.Price);
 
 			discount.Should().NotHaveValue();
 		}
 
-
-		[Fact]
-		public void CalculatePriceDiscount_ThisLargeTransfer_DiscountGetsApplied()
+		[Theory]
+		[InlineData("L", Providers.LP)]
+		public void CalculatePriceDiscount_LargeThirdTransfer_DiscountGetsApplied
+			(string size, Providers provider)
 		{
+			_dataService.ClearDiscounts();
+			var date = new DateTime(2000, 1, 1);
 			var freeLargeShippping = new FreeLargeShipping(_dataService);
+			var pricing = _dataService.GetPricings().FirstOrDefault(p => p.Size == size && p.Provider == provider);
 
-			_dataService.TrackLargeShipments(new DateTime(2000, 1, 1));
-			_dataService.TrackLargeShipments(new DateTime(2000, 1, 1));
+
+			_dataService.TrackLargeShipments(date);
+			_dataService.TrackLargeShipments(date);
 
 
 			var shipment = new Shipment()
 			{
 				Date = new DateTime(2000, 1, 1),
-				Size = "L",
-				Provider = Provider.LP,
+				Size = size,
+				Price = pricing.Price,
+				Provider = provider,
 			};
 
 			var (price, discount) = shipment.Apply(freeLargeShippping);
@@ -84,7 +75,37 @@ namespace ShippingEngine.ApplicationTests.Discounts
 			price.Value.Should().Be(0);
 
 			discount.Should().HaveValue();
-			discount.Should().Be(2);
+			discount.Should().Be(pricing.Price);
+		}
+
+		[Theory]
+		[InlineData("M", Providers.LP)]
+		[InlineData("S", Providers.LP)]
+		public void CalculatePriceDiscount_NonLargeThirdTransfer_DiscountNotApplied
+			(string size, Providers provider)
+		{
+			var date = new DateTime(2000, 1, 1);
+			var freeLargeShippping = new FreeLargeShipping(_dataService);
+			var pricing = _dataService.GetPricings().FirstOrDefault(p => p.Size == size && p.Provider == provider);
+
+			_dataService.TrackLargeShipments(date);
+			_dataService.TrackLargeShipments(date);
+
+
+			var shipment = new Shipment()
+			{
+				Date = date,
+				Size = size,
+				Price = pricing.Price,
+				Provider = provider,
+			};
+
+			var (price, discount) = shipment.Apply(freeLargeShippping);
+
+			price.Should().HaveValue();
+			price.Value.Should().Be(pricing.Price);
+
+			discount.Should().NotHaveValue();
 		}
 	}
 }

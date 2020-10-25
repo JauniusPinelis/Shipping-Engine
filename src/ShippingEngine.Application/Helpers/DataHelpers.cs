@@ -17,7 +17,7 @@ namespace ShippingEngine.Application.Helpers
 				{
 					Date = DateTime.Parse(elements[0]),
 					Size = elements[1],
-					Provider = elements[2].ToEnum<Provider>()
+					Provider = elements[2].ToEnum<Providers>()
 				};
 			}
 			catch (Exception ex)
@@ -38,7 +38,7 @@ namespace ShippingEngine.Application.Helpers
 
 				return new Pricing()
 				{
-					Provider = elements[0].ToEnum<Provider>(),
+					Provider = elements[0].ToEnum<Providers>(),
 					Size = elements[1],
 					Price = Decimal.Parse(elements[2])
 				};

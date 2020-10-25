@@ -1,6 +1,6 @@
 ﻿namespace ShippingEngine.Domain.Enums
 {
-	public enum Provider
+	public enum Providers
 	{
 		MR,
 		LP

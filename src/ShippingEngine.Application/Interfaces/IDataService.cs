@@ -15,12 +15,13 @@ namespace ShippingEngine.Application.Interfaces
 
 		IEnumerable<Pricing> GetPricings();
 
-		decimal GetPrice(Provider provider, string size);
+		decimal GetPrice(Providers provider, string size);
 
 		UserInfo GetDiscountInfo();
 		void SaveDiscountInfo(DateTime date, decimal discount);
 		void TrackLargeShipments(DateTime date);
 		void ExportShipments();
 		void OverwriteShipments(List<Shipment> orders);
+		void ClearDiscounts();
 	}
 }

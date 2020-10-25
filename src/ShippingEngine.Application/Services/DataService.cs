@@ -42,7 +42,7 @@ namespace ShippingEngine.Application.Services
 			_pricings.AddRange(pricings);
 		}
 
-		public decimal GetPrice(Provider provider, string size)
+		public decimal GetPrice(Providers provider, string size)
 		{
 			return _pricings.FirstOrDefault(p => p.Provider == provider && p.Size == size).Price;
 		}
@@ -90,6 +90,11 @@ namespace ShippingEngine.Application.Services
 		public void OverwriteShipments(List<Shipment> shipments)
 		{
 			_shipments = shipments;
+		}
+
+		public void ClearDiscounts()
+		{
+			_discountInfo = new UserInfo();
 		}
 	}
 }
