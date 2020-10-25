@@ -1,4 +1,4 @@
-﻿using ShippingEngine.Domain.Discounts;
+﻿using ShippingEngine.Application.Interfaces;
 using ShippingEngine.Domain.Models;
 
 namespace ShippingEngine.Application.Extensions

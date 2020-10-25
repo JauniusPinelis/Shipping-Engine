@@ -1,6 +1,6 @@
 ﻿using ShippingEngine.Domain.Models;
 
-namespace ShippingEngine.Domain.Discounts
+namespace ShippingEngine.Application.Interfaces
 {
 	public interface IDiscount
 	{

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ShippingEngine.Application;
-using System;
 
 namespace ShippingEngine
 {
@@ -14,5 +13,5 @@ namespace ShippingEngine
 
 			serviceProvider.GetService<Runner>().Run();
 		}
-	}	
+	}
 }
