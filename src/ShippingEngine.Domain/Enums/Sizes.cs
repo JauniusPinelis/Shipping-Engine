@@ -2,8 +2,8 @@
 {
 	public enum Sizes
 	{
-		S, //Small
-		M, //Medium
-		L //Large
+		S, 
+		M, 
+		L 
 	}
 }

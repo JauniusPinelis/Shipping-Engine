@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShippingEngine.Domain.Extensions
 {
-    public static class StringExtentensons
+    public static class StringExtensions
     {
         public static T ToEnum<T>(this string value)
         {

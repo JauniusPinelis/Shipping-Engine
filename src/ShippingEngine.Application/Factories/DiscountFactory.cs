@@ -1,12 +1,11 @@
 ﻿using ShippingEngine.Application.Discounts;
 using ShippingEngine.Application.Interfaces;
-using ShippingEngine.Domain.Discounts;
 using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Models;
 
 namespace ShippingEngine.Application.Factories
 {
-	public class DiscountFactory : IDiscountFactory
+    public class DiscountFactory : IDiscountFactory
 	{
 		private readonly IDataService _dataService;
 

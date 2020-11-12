@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
+using ShippingEngine.Application.Discounts;
 using ShippingEngine.Application.Interfaces;
 using ShippingEngine.ApplicationTests.Fixtures;
-using ShippingEngine.Domain.Discounts;
 using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Models;
 using System;
@@ -9,7 +9,7 @@ using Xunit;
 
 namespace ShippingEngine.ApplicationTests.Discounts
 {
-	public class FreeLargeShippingTests : IClassFixture<DataServiceFixture>
+    public class FreeLargeShippingTests : IClassFixture<DataServiceFixture>
 	{
 		private readonly IDataService _dataService;
 		public FreeLargeShippingTests(DataServiceFixture fixture)

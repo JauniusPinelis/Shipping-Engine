@@ -1,38 +1,37 @@
-﻿
-using ShippingEngine.Application.Interfaces;
+﻿using ShippingEngine.Application.Interfaces;
 using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Helpers;
 using ShippingEngine.Domain.Models;
 
-namespace ShippingEngine.Domain.Discounts
+namespace ShippingEngine.Application.Discounts
 {
-	public class FreeLargeShipping : IDiscount
-	{
-		private readonly IDataService _dataService;
+    public class FreeLargeShipping : IDiscount
+    {
+        private readonly IDataService _dataService;
 
-		public FreeLargeShipping(IDataService dataService)
-		{
-			_dataService = dataService;
-		}
+        public FreeLargeShipping(IDataService dataService)
+        {
+            _dataService = dataService;
+        }
 
-		public (decimal?, decimal?) CalculatePriceDiscount(Shipment shipment)
-		{
-			if (shipment.Size == Sizes.L && shipment.Provider == Providers.LP)
-			{
-				var customerInfo = _dataService.GetDiscountInfo();
+        public (decimal?, decimal?) CalculatePriceDiscount(Shipment shipment)
+        {
+            if (shipment.Size == Sizes.L && shipment.Provider == Providers.LP)
+            {
+                var customerInfo = _dataService.GetDiscountInfo();
 
-				_dataService.IncrementLargeShipments(shipment.Date);
+                _dataService.IncrementLargeShipments(shipment.Date);
 
-				int count;
+                int count;
 
-				bool outcome = customerInfo.LargeShipmentsTrack.TryGetValue(shipment.Date.RemoveDays(), out count);
+                bool outcome = customerInfo.LargeShipmentsTrack.TryGetValue(shipment.Date.RemoveDays(), out count);
 
-				if (outcome && count == 3)
-				{
-					return (0, shipment.Price.Value);
-				}
-			}
-			return (shipment.Price, shipment.Discount);
-		}
-	}
+                if (outcome && count == 3)
+                {
+                    return (0, shipment.Price.Value);
+                }
+            }
+            return (shipment.Price, shipment.Discount);
+        }
+    }
 }
