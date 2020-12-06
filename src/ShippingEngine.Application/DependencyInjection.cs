@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ShippingEngine.Application.Factories;
 using ShippingEngine.Application.Services;
+using ShippingEngine.Domain.Factories;
 using ShippingEngine.Domain.Interfaces;
+using ShippingEngine.Domain.Services;
 
 namespace ShippingEngine.Application
 {

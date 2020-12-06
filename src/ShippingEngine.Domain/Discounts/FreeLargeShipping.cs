@@ -3,7 +3,7 @@ using ShippingEngine.Domain.Helpers;
 using ShippingEngine.Domain.Interfaces;
 using ShippingEngine.Domain.Models;
 
-namespace ShippingEngine.Application.Discounts
+namespace ShippingEngine.Domain.Discounts
 {
     public class FreeLargeShipping : IDiscount
     {
