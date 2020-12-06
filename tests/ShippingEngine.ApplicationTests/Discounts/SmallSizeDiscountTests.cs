@@ -1,15 +1,15 @@
 ﻿using FluentAssertions;
 using ShippingEngine.Application.Discounts;
-using ShippingEngine.Application.Interfaces;
 using ShippingEngine.ApplicationTests.Fixtures;
 using ShippingEngine.Domain.Enums;
+using ShippingEngine.Domain.Interfaces;
 using ShippingEngine.Domain.Models;
 using System;
 using Xunit;
 
 namespace ShippingEngine.ApplicationTests.Discounts
 {
-	public class SmallSizeDiscountTests : IClassFixture<DataServiceFixture>
+    public class SmallSizeDiscountTests : IClassFixture<DataServiceFixture>
 	{
 		private readonly IDataService _dataService;
 		public SmallSizeDiscountTests(DataServiceFixture fixture)

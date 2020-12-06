@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using ShippingEngine.Application.Discounts;
-using ShippingEngine.Application.Interfaces;
 using ShippingEngine.ApplicationTests.Fixtures;
 using ShippingEngine.Domain.Enums;
+using ShippingEngine.Domain.Interfaces;
 using ShippingEngine.Domain.Models;
 using System;
 using Xunit;

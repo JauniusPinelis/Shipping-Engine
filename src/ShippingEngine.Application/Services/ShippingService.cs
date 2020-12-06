@@ -1,11 +1,11 @@
-﻿using ShippingEngine.Application.Interfaces;
-using ShippingEngine.Domain.Helpers;
+﻿using ShippingEngine.Domain.Helpers;
+using ShippingEngine.Domain.Interfaces;
 using ShippingEngine.Domain.Models;
 using System.Linq;
 
 namespace ShippingEngine.Application.Services
 {
-	public class ShippingService : IShippingService
+    public class ShippingService : IShippingService
 	{
 		private readonly IDataService _dataService;
 		private readonly IPricingService _pricingService;

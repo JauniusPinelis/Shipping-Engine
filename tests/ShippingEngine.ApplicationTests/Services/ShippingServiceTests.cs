@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using ShippingEngine.Application.Interfaces;
 using ShippingEngine.ApplicationTests.Fixtures;
+using ShippingEngine.Domain.Interfaces;
 using System;
 using System.IO;
 using System.Linq;
@@ -8,7 +8,7 @@ using Xunit;
 
 namespace ShippingEngine.ApplicationTests
 {
-	public class ShippingServiceTests : IClassFixture<ShippingServiceFixture>
+    public class ShippingServiceTests : IClassFixture<ShippingServiceFixture>
 	{
 		private readonly IShippingService _shippingService;
 		private readonly IDataService _dataService;

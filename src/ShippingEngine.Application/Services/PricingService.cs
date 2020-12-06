@@ -1,9 +1,9 @@
-﻿using ShippingEngine.Application.Interfaces;
+﻿using ShippingEngine.Domain.Interfaces;
 using ShippingEngine.Domain.Models;
 
 namespace ShippingEngine.Application.Services
 {
-	public class PricingService : IPricingService
+    public class PricingService : IPricingService
 	{
 		private readonly IDataService _dataService;
 		private readonly IDiscountFactory _discountFactory;

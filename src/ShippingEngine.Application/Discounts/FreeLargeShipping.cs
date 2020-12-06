@@ -1,6 +1,6 @@
-﻿using ShippingEngine.Application.Interfaces;
-using ShippingEngine.Domain.Enums;
+﻿using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Helpers;
+using ShippingEngine.Domain.Interfaces;
 using ShippingEngine.Domain.Models;
 
 namespace ShippingEngine.Application.Discounts

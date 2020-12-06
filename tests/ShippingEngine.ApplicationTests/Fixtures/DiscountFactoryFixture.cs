@@ -1,9 +1,9 @@
 ﻿using ShippingEngine.Application.Factories;
-using ShippingEngine.Application.Interfaces;
+using ShippingEngine.Domain.Interfaces;
 
 namespace ShippingEngine.ApplicationTests.Fixtures
 {
-	public class DiscountFactoryFixture : DataServiceFixture
+    public class DiscountFactoryFixture : DataServiceFixture
 	{
 		public IDiscountFactory DiscountFactory { get; set; }
 

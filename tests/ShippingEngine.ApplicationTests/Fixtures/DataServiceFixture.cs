@@ -1,9 +1,9 @@
-﻿using ShippingEngine.Application.Interfaces;
-using ShippingEngine.Application.Services;
+﻿using ShippingEngine.Application.Services;
+using ShippingEngine.Domain.Interfaces;
 
 namespace ShippingEngine.ApplicationTests.Fixtures
 {
-	public class DataServiceFixture
+    public class DataServiceFixture
 	{
 		public readonly IDataService DataService;
 

@@ -1,9 +1,9 @@
-﻿using ShippingEngine.Application.Interfaces;
+﻿using ShippingEngine.Domain.Interfaces;
 using System;
 
 namespace ShippingEngine.Application
 {
-	public class Runner
+    public class Runner
 	{
 		private readonly IShippingService _shippingService;
 		private readonly IDataService _dataService;

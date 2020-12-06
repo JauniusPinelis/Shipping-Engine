@@ -1,9 +1,9 @@
-﻿using ShippingEngine.Application.Interfaces;
-using ShippingEngine.Application.Services;
+﻿using ShippingEngine.Application.Services;
+using ShippingEngine.Domain.Interfaces;
 
 namespace ShippingEngine.ApplicationTests.Fixtures
 {
-	public class ShippingServiceFixture : DiscountFactoryFixture
+    public class ShippingServiceFixture : DiscountFactoryFixture
 	{
 		public readonly IShippingService ShippingService;
 

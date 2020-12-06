@@ -1,6 +1,6 @@
-﻿using ShippingEngine.Application.Interfaces;
-using ShippingEngine.Domain.Enums;
+﻿using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Helpers;
+using ShippingEngine.Domain.Interfaces;
 using ShippingEngine.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace ShippingEngine.Application.Services
 {
-	public class DataService : IDataService
+    public class DataService : IDataService
 	{
 		private List<Shipment> _shipments = new List<Shipment>();
 		private readonly List<Pricing> _pricings = new List<Pricing>();

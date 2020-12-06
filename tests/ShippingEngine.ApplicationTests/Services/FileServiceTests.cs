@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
-using ShippingEngine.Application.Interfaces;
 using ShippingEngine.Application.Services;
+using ShippingEngine.Domain.Interfaces;
 using Xunit;
 
 namespace ShippingEngine.ApplicationTests.Services
 {
-	public class FileServiceTests
+    public class FileServiceTests
 	{
 		private readonly IFileService _fileService;
 

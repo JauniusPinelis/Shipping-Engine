@@ -1,13 +1,13 @@
 ﻿using FluentAssertions;
-using ShippingEngine.Application.Interfaces;
 using ShippingEngine.ApplicationTests.Fixtures;
 using ShippingEngine.Domain.Enums;
+using ShippingEngine.Domain.Interfaces;
 using ShippingEngine.Domain.Models;
 using Xunit;
 
 namespace ShippingEngine.ApplicationTests.Factories
 {
-	public class DiscountFactoryTests : IClassFixture<DiscountFactoryFixture>
+    public class DiscountFactoryTests : IClassFixture<DiscountFactoryFixture>
 	{
 		private readonly IDiscountFactory _discountFactory;
 

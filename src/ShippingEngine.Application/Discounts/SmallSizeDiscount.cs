@@ -1,12 +1,12 @@
-﻿using ShippingEngine.Application.Interfaces;
-using ShippingEngine.Domain.Enums;
+﻿using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Helpers;
+using ShippingEngine.Domain.Interfaces;
 using ShippingEngine.Domain.Models;
 using System.Linq;
 
 namespace ShippingEngine.Application.Discounts
 {
-	public class SmallSizeDiscount : IDiscount
+    public class SmallSizeDiscount : IDiscount
 	{
 		private readonly IDataService _dataService;
 
