@@ -3,6 +3,7 @@ using ShippingEngine.Application.Services;
 using ShippingEngine.Domain.Factories;
 using ShippingEngine.Domain.Interfaces;
 using ShippingEngine.Domain.Services;
+using ShippingEngine.Infrastructure.Services;
 
 namespace ShippingEngine.Application
 {
@@ -18,6 +19,7 @@ namespace ShippingEngine.Application
             services.AddScoped<IDiscountFactory, DiscountFactory>();
             services.AddScoped<IDataService, DataService>();
             services.AddScoped<IPricingService, PricingService>();
+            services.AddScoped<IOutputService, OutputService>();
 
             services.AddScoped<Runner>();
 

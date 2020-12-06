@@ -1,5 +1,4 @@
 ﻿using ShippingEngine.Domain.Interfaces;
-using System;
 
 namespace ShippingEngine.Application
 {
@@ -7,11 +6,13 @@ namespace ShippingEngine.Application
     {
         private readonly IShippingService _shippingService;
         private readonly IDataService _dataService;
+        private readonly IOutputService _outputService;
 
-        public Runner(IShippingService shippingService, IDataService dataService)
+        public Runner(IShippingService shippingService, IDataService dataService, IOutputService outputService)
         {
             _shippingService = shippingService;
             _dataService = dataService;
+            _outputService = outputService;
         }
 
         public void Run()
@@ -29,11 +30,11 @@ namespace ShippingEngine.Application
 
             foreach (var shipment in shipments)
             {
-                Console.WriteLine(shipment.ToString());
+                _outputService.WriteLine(shipment.ToString());
             }
 
-            Console.WriteLine("Press any key to exit");
-            Console.ReadLine();
+            _outputService.WriteLine("Press any key to exit");
+            _outputService.ReadLine();
         }
     }
 }
