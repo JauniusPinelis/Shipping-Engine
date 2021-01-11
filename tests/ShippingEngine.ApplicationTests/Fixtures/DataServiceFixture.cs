@@ -1,18 +1,19 @@
 ﻿using ShippingEngine.Application.Services;
 using ShippingEngine.Domain.Interfaces;
+using ShippingEngine.Domain.Services;
 
 namespace ShippingEngine.ApplicationTests.Fixtures
 {
     public class DataServiceFixture
-	{
-		public readonly IDataService DataService;
+    {
+        public readonly IDataService DataService;
 
-		public DataServiceFixture()
-		{
-			var _fileService = new FileService();
-			DataService = new DataService(_fileService);
+        public DataServiceFixture()
+        {
+            var _fileService = new FileService();
+            DataService = new DataService(_fileService);
 
-			DataService.SetupData();
-		}
-	}
+            DataService.SetupData();
+        }
+    }
 }

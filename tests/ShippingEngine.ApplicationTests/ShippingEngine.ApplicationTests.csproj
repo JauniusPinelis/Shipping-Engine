@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\ShippingEngine.Application\ShippingEngine.Application.csproj" />
+    <ProjectReference Include="..\..\src\ShippingEngine.Domain\ShippingEngine.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

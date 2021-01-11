@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using ShippingEngine.ApplicationTests.Fixtures;
+using ShippingEngine.Domain.Discounts;
 using ShippingEngine.Domain.Enums;
 using ShippingEngine.Domain.Interfaces;
 using ShippingEngine.Domain.Models;
